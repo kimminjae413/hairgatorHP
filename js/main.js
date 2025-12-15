@@ -434,7 +434,7 @@ async function runChatDemo() {
 
                             // 이미지들 슬라이드
                             for (let i = 0; i < step.images.length; i++) {
-                                await sleep(350);
+                                await sleep(500);
                                 overlay.innerHTML = `<img src="${step.images[i]}" alt="도해도 ${i + 1}">`;
                             }
 
