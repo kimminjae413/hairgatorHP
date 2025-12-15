@@ -118,7 +118,7 @@ body {
 }
 
 .about-description {
-    font-size: clamp(32px, 6vw, 56px);
+    font-size: clamp(32px, 5vw, 48px);
     line-height: 1.4;
     color: var(--gray-300);
     font-weight: 700;
@@ -154,7 +154,7 @@ body {
     }
 
     .about-description {
-        font-size: 22px;
+        font-size: 26px;
         letter-spacing: -0.5px;
     }
 
@@ -276,10 +276,10 @@ body {
 }
 
 .hero-title {
-    font-size: clamp(40px, 8vw, 72px);
+    font-size: clamp(32px, 5vw, 48px);
     font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -2px;
+    line-height: 1.2;
+    letter-spacing: -1px;
     margin-bottom: 24px;
     color: var(--gray-900);
 }
@@ -1257,7 +1257,7 @@ body {
 
 .section-title {
     text-align: center;
-    font-size: 36px;
+    font-size: clamp(32px, 5vw, 48px);
     font-weight: 700;
     margin-bottom: 16px;
     letter-spacing: -1px;
@@ -1386,12 +1386,13 @@ body {
 }
 
 .cta h2 {
-    font-size: 36px;
+    font-size: clamp(32px, 5vw, 48px);
     font-weight: 700;
     color: var(--gray-900);
     margin-bottom: 16px;
     position: relative;
     z-index: 1;
+    letter-spacing: -1px;
 }
 
 .cta p {
@@ -1532,8 +1533,8 @@ body {
     }
 
     .hero-title {
-        font-size: 36px;
-        letter-spacing: -1px;
+        font-size: 26px;
+        letter-spacing: -0.5px;
     }
 
     .hero-subtitle {
@@ -1593,11 +1594,11 @@ body {
     }
 
     .section-title {
-        font-size: 28px;
+        font-size: 26px;
     }
 
     .cta h2 {
-        font-size: 28px;
+        font-size: 26px;
     }
 
     .footer-content {
@@ -1644,7 +1645,7 @@ body {
     }
 
     .ai-studio-section .section-title {
-        font-size: 24px;
+        font-size: 26px;
         line-height: 1.4;
     }
 
