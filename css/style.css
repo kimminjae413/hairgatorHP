@@ -20,22 +20,22 @@
     --gray-900: #1a1918;
     --black: #000000;
 
-    /* Rose Pink Accent Palette */
-    --rose-50: #fff5f7;
-    --rose-100: #ffe4e9;
-    --rose-200: #ffc9d5;
-    --rose-300: #ffa3b5;
-    --rose-400: #ff7a95;
-    --rose-500: #f43f5e;
-    --rose-600: #e11d48;
-    --rose-700: #be123c;
-    --rose-800: #9f1239;
-    --rose-900: #881337;
+    /* Magenta Pink Accent Palette (Logo Color) */
+    --rose-50: #fce4ec;
+    --rose-100: #f8bbd9;
+    --rose-200: #f48fb1;
+    --rose-300: #f06292;
+    --rose-400: #ec407a;
+    --rose-500: #e91e63;
+    --rose-600: #d81b60;
+    --rose-700: #c2185b;
+    --rose-800: #ad1457;
+    --rose-900: #880e4f;
 
     /* Primary Gradient */
-    --gradient-rose: linear-gradient(135deg, #f43f5e 0%, #e11d48 50%, #be123c 100%);
-    --gradient-rose-soft: linear-gradient(135deg, #fda4af 0%, #f43f5e 100%);
-    --gradient-rose-glow: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 50%, #fecdd3 100%);
+    --gradient-rose: linear-gradient(135deg, #e91e63 0%, #d81b60 50%, #c2185b 100%);
+    --gradient-rose-soft: linear-gradient(135deg, #f48fb1 0%, #e91e63 100%);
+    --gradient-rose-glow: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 50%, #f48fb1 100%);
 }
 
 html {
