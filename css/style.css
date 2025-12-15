@@ -1877,7 +1877,7 @@ body {
         0 4px 20px rgba(0, 0, 0, 0.06),
         0 0 0 1px rgba(233, 30, 99, 0.08);
     position: relative;
-    min-height: 280px;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1918,17 +1918,13 @@ body {
 }
 
 .review-text {
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.8;
     color: var(--gray-700);
     margin-bottom: 24px;
     position: relative;
     z-index: 1;
     word-break: keep-all;
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
 }
 
 .review-author {
@@ -2018,7 +2014,7 @@ body {
 
     .review-card {
         padding: 36px 24px;
-        min-height: 240px;
+        min-height: auto;
         border-radius: 20px;
     }
 
@@ -2029,9 +2025,8 @@ body {
     }
 
     .review-text {
-        font-size: 15px;
+        font-size: 14px;
         line-height: 1.7;
-        -webkit-line-clamp: 5;
     }
 
     .review-avatar {
