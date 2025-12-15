@@ -669,12 +669,14 @@ body::before {
 
 .real-usage-caption .female-count {
     color: var(--accent);
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 1.3em;
 }
 
 .real-usage-caption .male-count {
     color: #2563eb;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 1.3em;
 }
 
 .real-usage-caption .free-trial {
