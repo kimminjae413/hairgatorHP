@@ -187,9 +187,23 @@ const chatDemoScript = [
         delay: 2000
     },
     {
+        type: 'rapidSlide',
+        images: [
+            'images/SR_MSP1003_01.png',
+            'images/SR_MSP1003_02.png',
+            'images/SR_MSP1003_03.png',
+            'images/SR_MSP1003_04.png',
+            'images/SR_MSP1003_05.png',
+            'images/SR_MSP1003_06.png',
+            'images/SR_MSP1003_07.png',
+            'images/SR_MSP1003_08.png'
+        ],
+        delay: 300
+    },
+    {
         type: 'user',
         message: 'A존이 뭐야?',
-        delay: 2000
+        delay: 1500
     },
     {
         type: 'bot',
@@ -404,6 +418,19 @@ async function runChatDemo() {
                             canvasImg.classList.add('zoom-left');
                         } else if (step.position === 'right') {
                             canvasImg.classList.add('zoom-right');
+                        }
+                    }
+                    break;
+
+                case 'rapidSlide':
+                    if (step.images && step.images.length > 0) {
+                        for (let i = 0; i < step.images.length; i++) {
+                            await sleep(150);
+                            canvasContent.innerHTML = `
+                                <div class="canvas-result rapid-slide">
+                                    <img src="${step.images[i]}" alt="슬라이드 ${i + 1}">
+                                </div>
+                            `;
                         }
                     }
                     break;
