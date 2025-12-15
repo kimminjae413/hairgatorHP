@@ -178,17 +178,12 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
     text-decoration: none;
-    color: var(--gray-900);
-    font-weight: 700;
-    font-size: 20px;
-    letter-spacing: -0.5px;
 }
 
 .logo img {
-    width: 36px;
-    height: 36px;
+    height: 32px;
+    width: auto;
     object-fit: contain;
 }
 
