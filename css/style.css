@@ -415,24 +415,19 @@ body {
 }
 
 .click-indicator svg {
-    animation: fingerTap 1s ease-in-out infinite;
-}
-
-@keyframes fingerTap {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(5px) scale(0.95); }
+    animation: cursorBounce 1s ease-in-out infinite;
 }
 
 @keyframes cursorBounce {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+    50% { transform: translateY(5px); }
 }
 
 .click-ripple {
     position: absolute;
     width: 40px;
     height: 40px;
-    border: 2px solid var(--rose-400);
+    border: 2px solid #FFD700;
     border-radius: 50%;
     opacity: 0;
 }
