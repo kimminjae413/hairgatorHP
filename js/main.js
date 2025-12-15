@@ -212,7 +212,7 @@ const chatDemoScript = [
 let chatDemoIndex = 0;
 let chatDemoRunning = false;
 
-function createMessage(type, message, image = null) {
+function createMessage(type, message, image = null, useTypingEffect = false) {
     const msgDiv = document.createElement('div');
     msgDiv.className = `chat-msg ${type}`;
 
@@ -229,7 +229,15 @@ function createMessage(type, message, image = null) {
     bubble.className = 'msg-bubble';
 
     if (message) {
-        bubble.textContent = message;
+        if (type === 'bot' && useTypingEffect) {
+            // 타이핑 효과로 메시지 표시
+            bubble.innerHTML = '<span class="typing-text-demo"></span><span class="typing-cursor-demo">|</span>';
+            setTimeout(() => {
+                typeMessageEffect(bubble.querySelector('.typing-text-demo'), message, bubble.querySelector('.typing-cursor-demo'));
+            }, 100);
+        } else {
+            bubble.textContent = message;
+        }
     }
 
     if (image) {
@@ -243,6 +251,26 @@ function createMessage(type, message, image = null) {
     msgDiv.appendChild(bubble);
 
     return msgDiv;
+}
+
+// 메시지 타이핑 효과
+function typeMessageEffect(element, text, cursor) {
+    let index = 0;
+    const speed = 30; // 타이핑 속도 (ms)
+
+    function type() {
+        if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, speed);
+        } else {
+            // 타이핑 완료 후 커서 숨기기
+            if (cursor) {
+                cursor.style.display = 'none';
+            }
+        }
+    }
+    type();
 }
 
 function createTypingIndicator() {
@@ -336,7 +364,8 @@ async function runChatDemo() {
                             chatMessages.scrollTop = chatMessages.scrollHeight;
                         } else {
                             removeTypingIndicator();
-                            const botMsg = createMessage('bot', step.message);
+                            // 타이핑 효과 적용
+                            const botMsg = createMessage('bot', step.message, null, true);
                             chatMessages.appendChild(botMsg);
                             chatMessages.scrollTop = chatMessages.scrollHeight;
                         }
