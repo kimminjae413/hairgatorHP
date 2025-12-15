@@ -383,12 +383,16 @@ function typeNextChar() {
     if (!typingElement) return;
 
     if (currentSegment >= typingTexts.length) {
-        // 타이핑 완료 - 커서 숨기기
-        if (cursorElement) {
-            setTimeout(() => {
-                cursorElement.style.display = 'none';
-            }, 1000);
-        }
+        // 타이핑 완료 - 잠시 대기 후 리셋하고 반복
+        setTimeout(() => {
+            typingElement.innerHTML = '';
+            currentSegment = 0;
+            currentChar = 0;
+            if (cursorElement) {
+                cursorElement.style.display = 'inline-block';
+            }
+            setTimeout(typeNextChar, 500);
+        }, 3000); // 3초 대기 후 반복
         return;
     }
 
