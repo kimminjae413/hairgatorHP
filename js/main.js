@@ -360,10 +360,106 @@ async function runChatDemo() {
     }
 }
 
+// ==================== Typing Animation ====================
+
+const typingTexts = [
+    { text: '감각에 데이터를 더해', type: 'normal' },
+    { text: '\n', type: 'break' },
+    { text: '디자이너의 기술을 ', type: 'normal' },
+    { text: '확신', type: 'highlight' },
+    { text: '으로 만드는', type: 'normal' },
+    { text: '\n', type: 'break' },
+    { text: 'AI 헤어 솔루션', type: 'bold' },
+    { text: '입니다.', type: 'normal' }
+];
+
+let typingElement = null;
+let cursorElement = null;
+let currentSegment = 0;
+let currentChar = 0;
+let typingStarted = false;
+
+function typeNextChar() {
+    if (!typingElement) return;
+
+    if (currentSegment >= typingTexts.length) {
+        // 타이핑 완료 - 커서 숨기기
+        if (cursorElement) {
+            setTimeout(() => {
+                cursorElement.style.display = 'none';
+            }, 1000);
+        }
+        return;
+    }
+
+    const segment = typingTexts[currentSegment];
+
+    if (segment.type === 'break') {
+        typingElement.innerHTML += '<br>';
+        currentSegment++;
+        currentChar = 0;
+        setTimeout(typeNextChar, 100);
+        return;
+    }
+
+    if (currentChar < segment.text.length) {
+        const char = segment.text[currentChar];
+
+        if (currentChar === 0 && segment.type !== 'normal') {
+            // 새 스타일 세그먼트 시작
+            if (segment.type === 'highlight') {
+                typingElement.innerHTML += '<span class="highlight">';
+            } else if (segment.type === 'bold') {
+                typingElement.innerHTML += '<span class="bold">';
+            }
+        }
+
+        typingElement.innerHTML = typingElement.innerHTML.replace(/<\/span>$/, '') + char;
+
+        if (segment.type !== 'normal') {
+            typingElement.innerHTML += '</span>';
+        }
+
+        currentChar++;
+
+        // 타이핑 속도 (랜덤하게 자연스럽게)
+        const speed = Math.random() * 50 + 50; // 50-100ms
+        setTimeout(typeNextChar, speed);
+    } else {
+        currentSegment++;
+        currentChar = 0;
+        setTimeout(typeNextChar, 80);
+    }
+}
+
+function startTypingAnimation() {
+    typingElement = document.getElementById('typing-text');
+    cursorElement = document.querySelector('.typing-cursor');
+
+    if (!typingElement || typingStarted) return;
+
+    typingStarted = true;
+
+    // Intersection Observer로 화면에 보일 때 시작
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setTimeout(typeNextChar, 500);
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    observer.observe(typingElement);
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     setupHeaderScroll();
     setupSmoothScroll();
+
+    // Start typing animation
+    startTypingAnimation();
 
     // Start menu slideshow after a short delay
     if (slides.length > 0) {
