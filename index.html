@@ -136,6 +136,65 @@
         </div>
     </section>
 
+    <!-- AI Studio Section -->
+    <section class="ai-studio-section" id="ai-studio">
+        <div class="container">
+            <p class="section-tag">AI Hair Recipe</p>
+            <h2 class="section-title">어려운 기술은 <span class="highlight">AI</span>가,<br>당신은 감각만 펼치세요.</h2>
+            <p class="section-subtitle">10년 걸릴 노하우, AI와 함께라면 1년이면 충분합니다.</p>
+        </div>
+
+        <!-- AI Studio Demo -->
+        <div class="ai-demo-container">
+            <div class="demo-window studio-layout">
+                <!-- Left Panel: Chat -->
+                <div class="demo-chat-panel">
+                    <div class="demo-chat-header">
+                        <div class="header-left">
+                            <img src="logo.png" alt="H" class="header-logo">
+                            <div class="header-title">
+                                <span class="title">HAIRGATOR AI</span>
+                                <span class="status"><span class="status-dot"></span>Pro Workstation</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-chat-messages" id="chatMessages">
+                        <!-- Messages dynamically added -->
+                    </div>
+                    <div class="demo-chat-input">
+                        <button class="input-upload-btn" id="uploadBtn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21 15 16 10 5 21"></polyline>
+                            </svg>
+                        </button>
+                        <input type="text" id="chatInput" placeholder="질문을 입력하세요..." readonly>
+                        <button class="input-send-btn" id="sendBtn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"/>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Canvas -->
+                <div class="demo-canvas-panel" id="canvasPanel">
+                    <div class="demo-canvas-header">
+                        <span class="canvas-tab active">결과</span>
+                        <span class="canvas-tab">히스토리</span>
+                    </div>
+                    <div class="demo-canvas-content" id="canvasContent">
+                        <div class="canvas-empty">
+                            <p>이미지를 업로드하면<br>AI가 분석한 결과가 여기에 표시됩니다</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta">
         <div class="container">

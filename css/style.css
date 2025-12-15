@@ -717,7 +717,7 @@ body {
     color: #fff;
 }
 
-.input-send-btn.active {
+.input-upload-btn.active, .input-send-btn.active {
     background: var(--rose-500);
     color: #fff;
     box-shadow: 0 0 12px rgba(244, 63, 94, 0.5);
@@ -1187,6 +1187,48 @@ body {
     font-size: 15px;
     color: var(--gray-500);
     line-height: 1.6;
+}
+
+/* AI Studio Section */
+.ai-studio-section {
+    padding: 120px 24px;
+    background: var(--gray-900);
+    text-align: center;
+}
+
+.ai-studio-section .section-tag {
+    display: inline-block;
+    background: rgba(244, 63, 94, 0.2);
+    border: 1px solid rgba(244, 63, 94, 0.3);
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--rose-400);
+    margin-bottom: 24px;
+}
+
+.ai-studio-section .section-title {
+    color: var(--white);
+    margin-bottom: 16px;
+}
+
+.ai-studio-section .section-title .highlight {
+    background: var(--gradient-rose);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.ai-studio-section .section-subtitle {
+    color: var(--gray-400);
+    margin-bottom: 60px;
+}
+
+.ai-demo-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
 
 /* CTA Section */
