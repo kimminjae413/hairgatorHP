@@ -373,11 +373,30 @@ body {
     background: var(--gray-900);
     color: var(--white);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border: 2px solid var(--rose-500);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-download::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(233, 30, 99, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-download:hover::before {
+    left: 100%;
 }
 
 .btn-download:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 30px rgba(233, 30, 99, 0.3);
+    border-color: var(--rose-400);
 }
 
 .btn-download svg {
@@ -1406,12 +1425,31 @@ body {
     background: var(--gray-900);
     color: var(--white);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border: 2px solid var(--rose-500);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-download-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(233, 30, 99, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-download-cta:hover::before {
+    left: 100%;
 }
 
 .btn-download-cta:hover {
     background: var(--gray-800);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(233, 30, 99, 0.3);
+    border-color: var(--rose-400);
 }
 
 .btn-download-cta svg {
