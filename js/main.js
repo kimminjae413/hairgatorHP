@@ -188,12 +188,12 @@ const chatDemoScript = [
     },
     {
         type: 'user',
-        message: '레이어 각도 설명해줘',
+        message: 'A존이 뭐야?',
         delay: 2000
     },
     {
         type: 'bot',
-        message: '레이어 각도에 대해 설명드릴게요.',
+        message: 'A존에 대해 설명드릴게요.',
         typing: true,
         delay: 800
     },
