@@ -106,20 +106,15 @@ body {
     text-align: center;
 }
 
-.about-title {
-    font-size: 48px;
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: -1px;
-    margin-bottom: 24px;
-    background: var(--gradient-rose);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.about-logo {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 32px;
 }
 
 .about-description {
-    font-size: 22px;
+    font-size: 28px;
     line-height: 1.8;
     color: var(--gray-300);
     font-weight: 400;
@@ -140,12 +135,12 @@ body {
         padding: 100px 20px 60px;
     }
 
-    .about-title {
-        font-size: 36px;
+    .about-logo {
+        max-width: 280px;
     }
 
     .about-description {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .about-image {
