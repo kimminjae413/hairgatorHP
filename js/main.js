@@ -198,23 +198,18 @@ const chatDemoScript = [
         delay: 800
     },
     {
-        type: 'bot',
-        message: 'A존은 헤어 커트에서 정수리 부분을 말합니다. 두상의 가장 높은 지점으로, 볼륨과 형태를 결정하는 중요한 영역이에요.',
-        delay: 1500
-    },
-    {
-        type: 'zoomChat',
-        delay: 2000
-    },
-    {
-        type: 'zoomOut',
-        delay: 2500
-    },
-    {
         type: 'canvas',
         action: 'showResult',
         image: 'demo/텍스트레시피.jpg',
+        delay: 1500
+    },
+    {
+        type: 'zoomCanvas',
         delay: 1000
+    },
+    {
+        type: 'zoomOut',
+        delay: 3000
     },
     {
         type: 'reset',
@@ -394,12 +389,12 @@ async function runChatDemo() {
                     }
                     break;
 
-                case 'zoomChat':
+                case 'zoomCanvas':
                     const chatPanel = document.querySelector('.demo-chat-panel');
                     const canvasPanel = document.querySelector('.demo-canvas-panel');
                     if (chatPanel && canvasPanel) {
-                        chatPanel.classList.add('zoom-in');
-                        canvasPanel.classList.add('zoom-out-panel');
+                        canvasPanel.classList.add('zoom-in');
+                        chatPanel.classList.add('zoom-out-panel');
                     }
                     break;
 
@@ -407,8 +402,8 @@ async function runChatDemo() {
                     const chatPanelOut = document.querySelector('.demo-chat-panel');
                     const canvasPanelOut = document.querySelector('.demo-canvas-panel');
                     if (chatPanelOut && canvasPanelOut) {
-                        chatPanelOut.classList.remove('zoom-in');
-                        canvasPanelOut.classList.remove('zoom-out-panel');
+                        canvasPanelOut.classList.remove('zoom-in');
+                        chatPanelOut.classList.remove('zoom-out-panel');
                     }
                     break;
 
