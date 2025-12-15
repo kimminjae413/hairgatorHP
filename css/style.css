@@ -421,21 +421,25 @@ body {
 }
 
 /* CTA Button in Header */
-.btn-cta-header {
-    background: var(--gradient-rose);
+.nav .btn-cta-header {
+    background: var(--gradient-rose) !important;
     color: var(--white) !important;
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+    padding: 10px 20px !important;
+    border-radius: 50px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3) !important;
     position: relative;
     overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
 }
 
-.btn-cta-header::before {
+.nav .btn-cta-header::before {
     content: '';
     position: absolute;
     top: 0;
@@ -446,12 +450,13 @@ body {
     transition: left 0.5s ease;
 }
 
-.btn-cta-header:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(233, 30, 99, 0.4);
+.nav .btn-cta-header:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 25px rgba(233, 30, 99, 0.4) !important;
+    color: var(--white) !important;
 }
 
-.btn-cta-header:hover::before {
+.nav .btn-cta-header:hover::before {
     left: 100%;
 }
 
@@ -1983,9 +1988,10 @@ body {
         display: none;
     }
 
-    .btn-cta-header {
-        padding: 8px 14px;
-        font-size: 12px;
+    .nav .btn-cta-header {
+        padding: 8px 14px !important;
+        font-size: 11px !important;
+        border-radius: 20px !important;
     }
 
     .hero {
@@ -2036,18 +2042,42 @@ body {
         margin: 0 -20px;
     }
 
-    .demo-window {
-        border-radius: 0;
-        transform: none;
-    }
-
     .features-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 16px;
     }
 
     .feature-card {
-        padding: 32px 24px;
+        padding: 28px 20px;
+    }
+
+    /* 모바일에서 호버 효과 축소 */
+    .feature-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 40px rgba(233, 30, 99, 0.12);
+    }
+
+    .feature-card:hover .feature-icon {
+        transform: scale(1.05);
+    }
+
+    .feature-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+    }
+
+    .feature-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .feature-card h3 {
+        font-size: 18px;
+    }
+
+    .feature-card p {
+        font-size: 14px;
     }
 
     .section-title {
