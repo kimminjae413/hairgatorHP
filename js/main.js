@@ -1,221 +1,129 @@
-// HAIRGATOR Homepage - AI Studio Style Demo
+// HAIRGATOR Homepage - Menu Slideshow Demo
 
-const demoData = {
-    theoryQuestion: 'A존, B존, C존에 대해 설명해줘',
-    theoryImage: 'demo/텍스트레시피.jpg',
-    uploadImage: 'demo/남자이미지.jpg',
-    recipeImage: 'demo/남자레시피.jpg'
-};
+// Slideshow configuration
+// Click positions for each slide (percentage based)
+const slideConfig = [
+    { // Slide 0 → 1: Click "Female" button
+        clickX: 55,  // percentage from left
+        clickY: 50,  // percentage from top
+        duration: 2500
+    },
+    { // Slide 1 → 2: Click "Eye Brow" tab
+        clickX: 38,
+        clickY: 12,
+        duration: 2500
+    },
+    { // Slide 2 → 3: Click rightmost card in first row
+        clickX: 88,
+        clickY: 38,
+        duration: 2500
+    },
+    { // Slide 3 → 4: Click "룩북" button
+        clickX: 40,
+        clickY: 82,
+        duration: 2500
+    },
+    { // Slide 4 → 5: Auto transition (lookbook scroll)
+        clickX: 50,
+        clickY: 50,
+        duration: 2000,
+        autoTransition: true
+    },
+    { // Slide 5 → 6: Auto transition (lookbook scroll)
+        clickX: 50,
+        clickY: 50,
+        duration: 2000,
+        autoTransition: true
+    },
+    { // Slide 6 → 0: Reset to beginning
+        clickX: 50,
+        clickY: 50,
+        duration: 3000,
+        autoTransition: true
+    }
+];
+
+// Step mapping: which step indicator to highlight for each slide
+const stepMapping = [0, 1, 2, 3, 4, 4, 4];
+
+let currentSlide = 0;
+let slideshowInterval = null;
 
 // DOM Elements
-const chatMessages = document.getElementById('chatMessages');
-const chatInput = document.getElementById('chatInput');
-const sendBtn = document.getElementById('sendBtn');
-const canvasContent = document.getElementById('canvasContent');
+const slides = document.querySelectorAll('.slideshow-image');
+const clickIndicator = document.getElementById('clickIndicator');
+const steps = document.querySelectorAll('.slideshow-steps .step');
 
-// Utility functions
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function scrollToBottom() {
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+function updateStep(slideIndex) {
+    const stepIndex = stepMapping[slideIndex];
+    steps.forEach((step, i) => {
+        step.classList.toggle('active', i === stepIndex);
+    });
 }
 
-// Add message to chat
-function addMessage(type, content, hasImage = false, imageSrc = '') {
-    const msg = document.createElement('div');
-    msg.className = `chat-msg ${type}`;
-
-    const avatar = document.createElement('div');
-    avatar.className = `msg-avatar ${type === 'user' ? 'user-avatar' : ''}`;
-
-    if (type === 'bot') {
-        avatar.innerHTML = '<img src="logo.png" alt="H">';
-    } else {
-        avatar.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>';
-    }
-
-    const bubble = document.createElement('div');
-    bubble.className = 'msg-bubble';
-
-    if (hasImage && imageSrc) {
-        bubble.innerHTML = `${content}<img src="${imageSrc}" alt="uploaded">`;
-    } else {
-        bubble.innerHTML = content;
-    }
-
-    msg.appendChild(avatar);
-    msg.appendChild(bubble);
-    chatMessages.appendChild(msg);
-    scrollToBottom();
-
-    return msg;
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+    });
+    updateStep(index);
 }
 
-// Add typing indicator
-function addTypingIndicator() {
-    const msg = document.createElement('div');
-    msg.className = 'chat-msg bot';
-    msg.id = 'typingMsg';
+function positionClickIndicator(x, y) {
+    const wrapper = document.querySelector('.slideshow-wrapper');
+    if (!wrapper || !clickIndicator) return;
 
-    const avatar = document.createElement('div');
-    avatar.className = 'msg-avatar';
-    avatar.innerHTML = '<img src="logo.png" alt="H">';
-
-    const bubble = document.createElement('div');
-    bubble.className = 'msg-bubble';
-    bubble.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
-
-    msg.appendChild(avatar);
-    msg.appendChild(bubble);
-    chatMessages.appendChild(msg);
-    scrollToBottom();
-
-    return msg;
+    const rect = wrapper.getBoundingClientRect();
+    clickIndicator.style.left = `${x}%`;
+    clickIndicator.style.top = `${y}%`;
+    clickIndicator.style.transform = 'translate(-50%, -50%)';
 }
 
-// Remove typing indicator
-function removeTypingIndicator() {
-    const typing = document.getElementById('typingMsg');
-    if (typing) typing.remove();
+async function performClick() {
+    if (!clickIndicator) return;
+
+    clickIndicator.classList.add('clicking');
+    await sleep(600);
+    clickIndicator.classList.remove('clicking');
 }
 
-// Type text in input
-async function typeInInput(text, speed = 60) {
-    chatInput.value = '';
-    sendBtn.classList.add('active');
-
-    for (let i = 0; i < text.length; i++) {
-        chatInput.value += text.charAt(i);
-        await sleep(speed);
-    }
-}
-
-// Show canvas result with reveal animation
-function showCanvasResult(imageSrc) {
-    canvasContent.innerHTML = `
-        <div class="canvas-result">
-            <img src="${imageSrc}" alt="AI Result">
-        </div>
-    `;
-}
-
-// Show AI analyzing effect on canvas
-function showAnalyzingEffect(imageSrc) {
-    canvasContent.innerHTML = `
-        <div class="canvas-result analyzing-effect">
-            <img src="${imageSrc}" alt="Analyzing..." style="animation: none; opacity: 0.7;">
-            <div class="scan-grid"></div>
-            <div class="pulse-point" style="top: 30%; left: 40%;"></div>
-            <div class="pulse-point" style="top: 45%; left: 55%; animation-delay: 0.3s;"></div>
-            <div class="pulse-point" style="top: 60%; left: 45%; animation-delay: 0.6s;"></div>
-            <div class="analysis-progress"></div>
-        </div>
-    `;
-}
-
-// Reset canvas
-function resetCanvas() {
-    canvasContent.innerHTML = `
-        <div class="canvas-empty">
-            <p>이미지를 업로드하면<br>AI가 분석한 결과가 여기에 표시됩니다</p>
-        </div>
-    `;
-}
-
-// Clear chat
-function clearChat() {
-    chatMessages.innerHTML = '';
-    chatInput.value = '';
-    sendBtn.classList.remove('active');
-}
-
-// Demo 1: Text Question
-async function runTextDemo() {
-    // Welcome message
-    addMessage('bot', '<strong>안녕하세요! HAIRGATOR AI입니다.</strong><br>헤어스타일 사진을 업로드하거나 질문해주세요.');
-    await sleep(1500);
-
-    // Type question
-    await typeInInput(demoData.theoryQuestion);
-    await sleep(500);
-
-    // Send message
-    chatInput.value = '';
-    sendBtn.classList.remove('active');
-    addMessage('user', demoData.theoryQuestion);
-    await sleep(500);
-
-    // Bot typing
-    addTypingIndicator();
-    await sleep(2000);
-    removeTypingIndicator();
-
-    // Bot response
-    addMessage('bot', '존(Zone)은 머리 전체를 구역별로 나누어 시술의 효율을 높이고, 각 구역의 특성에 맞는 디자인을 적용하기 위한 중요한 개념입니다.<br><br><strong>A존:</strong> 머리 뒤쪽 (후두부)<br><strong>B존:</strong> 귀 주변 및 측두부<br><strong>C존:</strong> 정수리 위쪽 영역');
-
-    // Show theory image in canvas
-    await sleep(500);
-    showCanvasResult(demoData.theoryImage);
-
-    await sleep(4000);
-}
-
-// Demo 2: Image Upload
-async function runImageDemo() {
-    // User uploads image
-    addMessage('user', '이 헤어스타일에 맞는 레시피를 만들어주세요', true, demoData.uploadImage);
-    await sleep(500);
-
-    // Show AI analyzing effect
-    showAnalyzingEffect(demoData.uploadImage);
-
-    // Bot typing
-    addTypingIndicator();
-    await sleep(800);
-    removeTypingIndicator();
-
-    addMessage('bot', '이미지를 분석하고 있습니다... 🔍');
-
-    await sleep(2500);
-
-    // Bot response
-    addMessage('bot', '✅ <strong>남자 스타일 분석 완료!</strong><br><br>스타일: 사이드 파트<br>탑 길이: Medium<br>사이드: Medium<br>텍스쳐: Smooth<br><br>👉 오른쪽 캔버스에서 맞춤 레시피를 확인하세요!');
-
-    // Show recipe result
-    await sleep(500);
-    showCanvasResult(demoData.recipeImage);
-
-    await sleep(5000);
-}
-
-// Main demo loop
-async function startDemoLoop() {
+async function runSlideshow() {
     while (true) {
-        // Reset
-        clearChat();
-        resetCanvas();
-        await sleep(1000);
+        const config = slideConfig[currentSlide];
 
-        // Demo 1: Text question
-        await runTextDemo();
+        // Position and show click indicator (unless auto transition)
+        if (!config.autoTransition) {
+            positionClickIndicator(config.clickX, config.clickY);
+            clickIndicator.classList.add('show');
 
-        // Reset for next demo
-        clearChat();
-        resetCanvas();
-        await sleep(1000);
+            // Wait a bit, then perform click
+            await sleep(config.duration - 800);
+            await performClick();
+            await sleep(200);
 
-        // Demo 2: Image upload
-        await runImageDemo();
+            clickIndicator.classList.remove('show');
+        } else {
+            // Auto transition - just wait
+            await sleep(config.duration);
+        }
 
-        await sleep(2000);
+        // Move to next slide
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+
+        // Small pause between slides
+        await sleep(300);
     }
 }
 
 // Header scroll effect
 function setupHeaderScroll() {
     const header = document.querySelector('.header');
+    if (!header) return;
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.08)';
@@ -243,7 +151,10 @@ document.addEventListener('DOMContentLoaded', () => {
     setupHeaderScroll();
     setupSmoothScroll();
 
-    setTimeout(() => {
-        startDemoLoop();
-    }, 1000);
+    // Start slideshow after a short delay
+    if (slides.length > 0) {
+        setTimeout(() => {
+            runSlideshow();
+        }, 1500);
+    }
 });

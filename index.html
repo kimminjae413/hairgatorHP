@@ -41,14 +41,14 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <p class="hero-tag">AI Hair Recipe Platform</p>
+            <p class="hero-tag">Hair Style Book</p>
             <h1 class="hero-title">
-                어려운 기술은 <span class="highlight">AI</span>가,<br>
-                당신은 감각만 펼치세요.
+                고객이 원하는 <span class="highlight">그 느낌</span>,<br>
+                1초 만에 찾아드립니다.
             </h1>
             <p class="hero-subtitle">
-                10년 걸릴 노하우, AI와 함께라면 1년이면 충분합니다.<br>
-                암기하지 마세요. 헤어게이터가 당신의 두뇌가 되어드립니다.
+                "이런 느낌이요"를 더 이상 추측하지 마세요.<br>
+                3,000장의 스타일북으로 상담 시간은 줄이고, 만족도는 높이세요.
             </p>
             <div class="hero-download-buttons">
                 <a href="https://apps.apple.com/kr/app/헤어게이터/id1587833071" class="btn-download apple" target="_blank">
@@ -72,52 +72,34 @@
             </div>
         </div>
 
-        <!-- Interactive Demo - AI Studio Style -->
+        <!-- Interactive Demo - Menu Slideshow -->
         <div class="demo-container" id="demo">
-            <div class="demo-window studio-layout">
-                <!-- Left Panel: Chat -->
-                <div class="demo-chat-panel">
-                    <div class="demo-chat-header">
-                        <div class="header-left">
-                            <img src="logo.png" alt="H" class="header-logo">
-                            <div class="header-title">
-                                <span class="title">HAIRGATOR AI</span>
-                                <span class="status"><span class="status-dot"></span>Pro Workstation</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="demo-chat-messages" id="chatMessages">
-                        <!-- Messages dynamically added -->
-                    </div>
-                    <div class="demo-chat-input">
-                        <button class="input-upload-btn" id="uploadBtn">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                                <polyline points="21 15 16 10 5 21"></polyline>
-                            </svg>
-                        </button>
-                        <input type="text" id="chatInput" placeholder="질문을 입력하세요..." readonly>
-                        <button class="input-send-btn" id="sendBtn">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="22" y1="2" x2="11" y2="13"/>
-                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                            </svg>
-                        </button>
+            <div class="demo-window menu-slideshow">
+                <div class="slideshow-wrapper">
+                    <img src="메뉴판/헤어메뉴판0.jpg" alt="메뉴판" class="slideshow-image active" id="slide-0">
+                    <img src="메뉴판/헤어메뉴판1.jpg" alt="메뉴판" class="slideshow-image" id="slide-1">
+                    <img src="메뉴판/헤어메뉴판2.jpg" alt="메뉴판" class="slideshow-image" id="slide-2">
+                    <img src="메뉴판/헤어메뉴판3.jpg" alt="메뉴판" class="slideshow-image" id="slide-3">
+                    <img src="메뉴판/헤어메뉴판4.jpg" alt="룩북" class="slideshow-image" id="slide-4">
+                    <img src="메뉴판/헤어메뉴판5.jpg" alt="룩북" class="slideshow-image" id="slide-5">
+                    <img src="메뉴판/헤어메뉴판6.jpg" alt="룩북" class="slideshow-image" id="slide-6">
+
+                    <!-- Click Indicator -->
+                    <div class="click-indicator" id="clickIndicator">
+                        <div class="click-ripple"></div>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13.64 21.97C13.14 22.21 12.54 22 12.31 21.5L10.13 16.76L7.62 18.78C7.45 18.92 7.24 19 7.02 19C6.55 19 6.14 18.61 6.14 18.09V3.91C6.14 3.39 6.55 3 7.02 3C7.24 3 7.45 3.08 7.62 3.22L18.53 12.44C18.87 12.72 18.95 13.2 18.71 13.57C18.5 13.89 18.12 14.03 17.77 13.93L14.43 12.93L16.61 17.67C16.84 18.17 16.63 18.77 16.13 19L13.64 21.97Z"/>
+                        </svg>
                     </div>
                 </div>
 
-                <!-- Right Panel: Canvas -->
-                <div class="demo-canvas-panel" id="canvasPanel">
-                    <div class="demo-canvas-header">
-                        <span class="canvas-tab active">결과</span>
-                        <span class="canvas-tab">히스토리</span>
-                    </div>
-                    <div class="demo-canvas-content" id="canvasContent">
-                        <div class="canvas-empty">
-                            <p>이미지를 업로드하면<br>AI가 분석한 결과가 여기에 표시됩니다</p>
-                        </div>
-                    </div>
+                <!-- Step Indicator -->
+                <div class="slideshow-steps">
+                    <span class="step active" data-step="0">성별 선택</span>
+                    <span class="step" data-step="1">기장 선택</span>
+                    <span class="step" data-step="2">스타일 탐색</span>
+                    <span class="step" data-step="3">상세 보기</span>
+                    <span class="step" data-step="4">룩북</span>
                 </div>
             </div>
         </div>

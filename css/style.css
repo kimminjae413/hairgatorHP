@@ -332,8 +332,110 @@ body {
 /* Demo Container */
 .demo-container {
     width: 100%;
-    max-width: 700px;
+    max-width: 800px;
     perspective: 1000px;
+}
+
+/* Menu Slideshow */
+.menu-slideshow {
+    background: var(--gray-900);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,0.1),
+        0 25px 60px -10px rgba(0, 0, 0, 0.3);
+}
+
+.slideshow-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+}
+
+.slideshow-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.slideshow-image.active {
+    opacity: 1;
+}
+
+/* Click Indicator */
+.click-indicator {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.click-indicator.show {
+    opacity: 1;
+}
+
+.click-indicator svg {
+    color: var(--white);
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+    animation: cursorBounce 0.8s ease-in-out infinite;
+}
+
+@keyframes cursorBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.click-ripple {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--rose-400);
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.click-indicator.clicking .click-ripple {
+    animation: clickRipple 0.6s ease-out;
+}
+
+@keyframes clickRipple {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+}
+
+/* Step Indicator */
+.slideshow-steps {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+    background: rgba(0,0,0,0.8);
+}
+
+.slideshow-steps .step {
+    font-size: 12px;
+    color: var(--gray-500);
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    transition: all 0.3s ease;
+}
+
+.slideshow-steps .step.active {
+    color: var(--white);
+    background: var(--rose-600);
 }
 
 .demo-window {
