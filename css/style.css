@@ -1782,8 +1782,9 @@ body {
     }
 
     .nav .btn-cta-header {
-        padding: 10px 18px;
-        font-size: 12px;
+        padding: 10px 16px;
+        font-size: 11px;
+        white-space: nowrap;
     }
 
     .about-section {
