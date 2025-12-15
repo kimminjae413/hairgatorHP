@@ -92,12 +92,121 @@ body {
 
 .about-image {
     width: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
 .about-image img {
     width: 100%;
     height: auto;
     display: block;
+}
+
+/* AI Analysis Canvas */
+#ai-analysis-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* AI Parameters Display */
+.ai-params {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 10;
+}
+
+.param-item {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(233, 30, 99, 0.5);
+    border-radius: 8px;
+    padding: 8px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    opacity: 0;
+    transform: translateX(20px);
+    animation: paramSlideIn 0.5s ease forwards;
+}
+
+.param-item:nth-child(1) { animation-delay: 1s; }
+.param-item:nth-child(2) { animation-delay: 1.3s; }
+.param-item:nth-child(3) { animation-delay: 1.6s; }
+.param-item:nth-child(4) { animation-delay: 1.9s; }
+
+@keyframes paramSlideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.param-label {
+    font-size: 10px;
+    color: rgba(233, 30, 99, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.param-value {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Scan Line Effect */
+.scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(233, 30, 99, 0.8),
+        rgba(233, 30, 99, 1),
+        rgba(233, 30, 99, 0.8),
+        transparent
+    );
+    box-shadow: 0 0 20px rgba(233, 30, 99, 0.8), 0 0 40px rgba(233, 30, 99, 0.4);
+    animation: scanMove 3s ease-in-out infinite;
+    z-index: 5;
+}
+
+@keyframes scanMove {
+    0%, 100% { top: 0; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .ai-params {
+        top: 10px;
+        right: 10px;
+        gap: 6px;
+    }
+
+    .param-item {
+        padding: 6px 10px;
+    }
+
+    .param-label {
+        font-size: 8px;
+    }
+
+    .param-value {
+        font-size: 11px;
+    }
 }
 
 .about-text {

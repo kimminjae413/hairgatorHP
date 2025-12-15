@@ -360,6 +360,175 @@ async function runChatDemo() {
     }
 }
 
+// ==================== AI Analysis Canvas Animation ====================
+
+function initAIAnalysisCanvas() {
+    const canvas = document.getElementById('ai-analysis-canvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    const container = canvas.parentElement;
+
+    function resizeCanvas() {
+        canvas.width = container.offsetWidth;
+        canvas.height = container.offsetHeight;
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // 페이스 메쉬 포인트들 (얼굴 영역에 집중)
+    const facePoints = [];
+    const hairPoints = [];
+    const numFacePoints = 30;
+    const numHairPoints = 20;
+
+    // 얼굴 영역 포인트 생성 (이미지 중앙 하단)
+    for (let i = 0; i < numFacePoints; i++) {
+        facePoints.push({
+            x: 0.3 + Math.random() * 0.4, // 30-70% 가로
+            y: 0.3 + Math.random() * 0.4, // 30-70% 세로
+            size: Math.random() * 3 + 2,
+            pulse: Math.random() * Math.PI * 2,
+            connections: []
+        });
+    }
+
+    // 헤어 영역 포인트 생성 (이미지 상단)
+    for (let i = 0; i < numHairPoints; i++) {
+        hairPoints.push({
+            x: 0.2 + Math.random() * 0.6, // 20-80% 가로
+            y: 0.1 + Math.random() * 0.25, // 10-35% 세로
+            size: Math.random() * 2 + 1,
+            pulse: Math.random() * Math.PI * 2
+        });
+    }
+
+    // 연결선 설정
+    facePoints.forEach((point, i) => {
+        const nearbyPoints = facePoints
+            .map((p, j) => ({ index: j, dist: Math.hypot(p.x - point.x, p.y - point.y) }))
+            .filter(p => p.index !== i && p.dist < 0.15)
+            .slice(0, 3);
+        point.connections = nearbyPoints.map(p => p.index);
+    });
+
+    let animationFrame = 0;
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const w = canvas.width;
+        const h = canvas.height;
+
+        // 페이스 메쉬 그리기
+        ctx.strokeStyle = 'rgba(233, 30, 99, 0.3)';
+        ctx.lineWidth = 1;
+
+        // 연결선 그리기
+        facePoints.forEach((point, i) => {
+            point.connections.forEach(j => {
+                const other = facePoints[j];
+                ctx.beginPath();
+                ctx.moveTo(point.x * w, point.y * h);
+                ctx.lineTo(other.x * w, other.y * h);
+                ctx.stroke();
+            });
+        });
+
+        // 페이스 포인트 그리기
+        facePoints.forEach((point, i) => {
+            const pulse = Math.sin(animationFrame * 0.05 + point.pulse) * 0.5 + 0.5;
+            const size = point.size * (1 + pulse * 0.3);
+
+            ctx.beginPath();
+            ctx.arc(point.x * w, point.y * h, size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(233, 30, 99, ${0.5 + pulse * 0.5})`;
+            ctx.fill();
+
+            // 글로우 효과
+            ctx.beginPath();
+            ctx.arc(point.x * w, point.y * h, size * 2, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(233, 30, 99, ${0.1 * pulse})`;
+            ctx.fill();
+        });
+
+        // 헤어 분석 포인트 그리기
+        hairPoints.forEach((point, i) => {
+            const pulse = Math.sin(animationFrame * 0.03 + point.pulse) * 0.5 + 0.5;
+
+            // 수직선 (헤어 분석 느낌)
+            ctx.beginPath();
+            ctx.moveTo(point.x * w, point.y * h);
+            ctx.lineTo(point.x * w, point.y * h + 20 + pulse * 10);
+            ctx.strokeStyle = `rgba(236, 64, 122, ${0.3 + pulse * 0.3})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            // 포인트
+            ctx.beginPath();
+            ctx.arc(point.x * w, point.y * h, point.size * (1 + pulse * 0.5), 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(236, 64, 122, ${0.6 + pulse * 0.4})`;
+            ctx.fill();
+        });
+
+        // 분석 그리드 효과
+        ctx.strokeStyle = 'rgba(233, 30, 99, 0.05)';
+        ctx.lineWidth = 1;
+        const gridSize = 50;
+        for (let x = 0; x < w; x += gridSize) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, h);
+            ctx.stroke();
+        }
+        for (let y = 0; y < h; y += gridSize) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(w, y);
+            ctx.stroke();
+        }
+
+        // 코너 타겟팅 UI
+        const cornerSize = 40;
+        ctx.strokeStyle = 'rgba(233, 30, 99, 0.6)';
+        ctx.lineWidth = 2;
+
+        // 좌상단
+        ctx.beginPath();
+        ctx.moveTo(20, 20 + cornerSize);
+        ctx.lineTo(20, 20);
+        ctx.lineTo(20 + cornerSize, 20);
+        ctx.stroke();
+
+        // 우상단
+        ctx.beginPath();
+        ctx.moveTo(w - 20 - cornerSize, 20);
+        ctx.lineTo(w - 20, 20);
+        ctx.lineTo(w - 20, 20 + cornerSize);
+        ctx.stroke();
+
+        // 좌하단
+        ctx.beginPath();
+        ctx.moveTo(20, h - 20 - cornerSize);
+        ctx.lineTo(20, h - 20);
+        ctx.lineTo(20 + cornerSize, h - 20);
+        ctx.stroke();
+
+        // 우하단
+        ctx.beginPath();
+        ctx.moveTo(w - 20 - cornerSize, h - 20);
+        ctx.lineTo(w - 20, h - 20);
+        ctx.lineTo(w - 20, h - 20 - cornerSize);
+        ctx.stroke();
+
+        animationFrame++;
+        requestAnimationFrame(draw);
+    }
+
+    draw();
+}
+
 // ==================== Typing Animation ====================
 
 const typingTexts = [
@@ -461,6 +630,9 @@ function startTypingAnimation() {
 document.addEventListener('DOMContentLoaded', () => {
     setupHeaderScroll();
     setupSmoothScroll();
+
+    // Start AI analysis canvas animation
+    initAIAnalysisCanvas();
 
     // Start typing animation
     startTypingAnimation();
