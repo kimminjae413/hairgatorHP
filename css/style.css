@@ -1362,17 +1362,17 @@ body::before {
 
 .rapid-slide-overlay {
     position: absolute;
-    top: 5%;
-    right: 5%;
-    width: 45%;
-    height: 60%;
+    top: 8%;
+    right: 8%;
+    width: 38%;
+    height: 55%;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    background: rgba(245, 245, 245, 0.98);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .rapid-slide-overlay img {
