@@ -1619,6 +1619,10 @@ body::before {
     letter-spacing: -0.02em;
 }
 
+.cta h2 .highlight {
+    color: var(--accent);
+}
+
 .cta p {
     font-size: 16px;
     color: var(--stone);
