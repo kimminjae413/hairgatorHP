@@ -46,81 +46,50 @@
             </a>
         </div>
 
-        <!-- Interactive Demo -->
+        <!-- Interactive Demo - AI Studio Style -->
         <div class="demo-container" id="demo">
-            <div class="demo-window">
-                <div class="demo-header">
-                    <div class="demo-dots">
-                        <span></span><span></span><span></span>
+            <div class="demo-window studio-layout">
+                <!-- Left Panel: Chat -->
+                <div class="demo-chat-panel">
+                    <div class="demo-chat-header">
+                        <div class="header-left">
+                            <img src="logo.png" alt="H" class="header-logo">
+                            <div class="header-title">
+                                <span class="title">HAIRGATOR AI</span>
+                                <span class="status"><span class="status-dot"></span>Pro Workstation</span>
+                            </div>
+                        </div>
                     </div>
-                    <span class="demo-title">HAIRGATOR AI STUDIO</span>
+                    <div class="demo-chat-messages" id="chatMessages">
+                        <!-- Messages dynamically added -->
+                    </div>
+                    <div class="demo-chat-input">
+                        <button class="input-upload-btn" id="uploadBtn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21 15 16 10 5 21"></polyline>
+                            </svg>
+                        </button>
+                        <input type="text" id="chatInput" placeholder="질문을 입력하세요..." readonly>
+                        <button class="input-send-btn" id="sendBtn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"/>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-                <div class="demo-body">
-                    <!-- Demo 1: Image Upload -->
-                    <!-- Step 1: Upload Area -->
-                    <div class="demo-step" id="step1">
-                        <div class="upload-area" id="uploadArea">
-                            <div class="upload-icon">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                                    <polyline points="17 8 12 3 7 8"/>
-                                    <line x1="12" y1="3" x2="12" y2="15"/>
-                                </svg>
-                            </div>
-                            <p class="upload-text">원하는 스타일 이미지를 업로드하세요</p>
-                            <span class="upload-hint">드래그 앤 드롭 또는 클릭</span>
-                        </div>
-                    </div>
 
-                    <!-- Step 2: Image Uploaded + Analyzing -->
-                    <div class="demo-step hidden" id="step2">
-                        <div class="uploaded-image-container">
-                            <img src="" alt="업로드된 이미지" class="uploaded-image" id="uploadedImage">
-                            <div class="image-label">업로드된 스타일</div>
-                        </div>
-                        <div class="analysis-status" id="analysisStatus">
-                            <div class="analysis-spinner"></div>
-                            <span>AI가 이미지를 분석하고 있습니다...</span>
-                        </div>
+                <!-- Right Panel: Canvas -->
+                <div class="demo-canvas-panel" id="canvasPanel">
+                    <div class="demo-canvas-header">
+                        <span class="canvas-tab active">결과</span>
+                        <span class="canvas-tab">히스토리</span>
                     </div>
-
-                    <!-- Step 3: Recipe Result -->
-                    <div class="demo-step hidden" id="step3">
-                        <div class="result-screenshot">
-                            <img src="" alt="AI 생성 레시피" class="recipe-screenshot" id="recipeScreenshot">
-                        </div>
-                    </div>
-
-                    <!-- Demo 2: Text Question -->
-                    <!-- Step 4: Text Input -->
-                    <div class="demo-step hidden" id="step4">
-                        <div class="chat-input-demo">
-                            <div class="chat-input-box">
-                                <span class="typing-text" id="typingText"></span>
-                                <span class="cursor">|</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 5: AI Responding -->
-                    <div class="demo-step hidden" id="step5">
-                        <div class="chat-input-demo sent">
-                            <div class="chat-input-box sent-message">
-                                A존, B존, C존에 대해 설명해줘
-                            </div>
-                        </div>
-                        <div class="analysis-status">
-                            <div class="analysis-spinner"></div>
-                            <span>AI가 답변을 생성하고 있습니다...</span>
-                        </div>
-                    </div>
-
-                    <!-- Step 6: Theory Result with Zoom -->
-                    <div class="demo-step hidden" id="step6">
-                        <div class="theory-result">
-                            <div class="theory-screenshot-container" id="theoryContainer">
-                                <img src="" alt="이론 설명" class="theory-screenshot" id="theoryScreenshot">
-                            </div>
+                    <div class="demo-canvas-content" id="canvasContent">
+                        <div class="canvas-empty">
+                            <p>이미지를 업로드하면<br>AI가 분석한 결과가 여기에 표시됩니다</p>
                         </div>
                     </div>
                 </div>
