@@ -1070,6 +1070,17 @@ body::before {
     background: var(--graphite);
     display: flex;
     flex-direction: column;
+    transition: all 0.6s var(--ease-out-expo);
+}
+
+.demo-chat-panel.zoom-in {
+    width: 75%;
+    z-index: 5;
+}
+
+.demo-canvas-panel.zoom-out-panel {
+    width: 25%;
+    opacity: 0.5;
 }
 
 .demo-chat-header {
@@ -1268,6 +1279,7 @@ body::before {
     background: var(--cream);
     display: flex;
     flex-direction: column;
+    transition: all 0.6s var(--ease-out-expo);
 }
 
 .demo-canvas-header {
