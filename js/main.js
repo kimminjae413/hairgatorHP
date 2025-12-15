@@ -1,7 +1,13 @@
-// HAIRGATOR Homepage - Interactive Image → Recipe Demo
+// HAIRGATOR Homepage - Interactive Demo
+// Demo 1: Text Question → Theory Explanation
+// Demo 2: Image Upload → Recipe Result
 
-// Demo data
-const demo = {
+const demoData = {
+    // Demo 1: Text question
+    question: 'A존, B존, C존에 대해 설명해줘',
+    theoryImage: 'demo/텍스트레시피.jpg',
+
+    // Demo 2: Image upload
     uploadImage: 'demo/남자이미지.jpg',
     recipeImage: 'demo/남자레시피.jpg'
 };
@@ -12,19 +18,28 @@ let isAnimating = false;
 const step1 = document.getElementById('step1');
 const step2 = document.getElementById('step2');
 const step3 = document.getElementById('step3');
+const step4 = document.getElementById('step4');
+const step5 = document.getElementById('step5');
+const step6 = document.getElementById('step6');
+
 const uploadArea = document.getElementById('uploadArea');
 const uploadedImage = document.getElementById('uploadedImage');
 const recipeScreenshot = document.getElementById('recipeScreenshot');
+const typingText = document.getElementById('typingText');
+const theoryScreenshot = document.getElementById('theoryScreenshot');
 
-// Show step
+// Hide all steps
+function hideAllSteps() {
+    [step1, step2, step3, step4, step5, step6].forEach(step => {
+        step.classList.add('hidden');
+    });
+}
+
+// Show specific step
 function showStep(stepNum) {
-    step1.classList.add('hidden');
-    step2.classList.add('hidden');
-    step3.classList.add('hidden');
-
-    if (stepNum === 1) step1.classList.remove('hidden');
-    if (stepNum === 2) step2.classList.remove('hidden');
-    if (stepNum === 3) step3.classList.remove('hidden');
+    hideAllSteps();
+    const step = document.getElementById(`step${stepNum}`);
+    if (step) step.classList.remove('hidden');
 }
 
 // Sleep helper
@@ -32,11 +47,48 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// Run demo animation
-async function runDemo() {
-    if (isAnimating) return;
-    isAnimating = true;
+// Typing animation
+async function typeText(text, element, speed = 80) {
+    element.textContent = '';
+    for (let i = 0; i < text.length; i++) {
+        element.textContent += text.charAt(i);
+        await sleep(speed);
+    }
+}
 
+// Demo 1: Text Question → Theory Explanation
+async function runTextDemo() {
+    // Step 4: Show typing input
+    showStep(4);
+    await typeText(demoData.question, typingText, 80);
+    await sleep(500);
+
+    // Step 5: Show sent message + AI responding
+    showStep(5);
+    await sleep(2000);
+
+    // Step 6: Show theory result with zoom effects
+    theoryScreenshot.src = demoData.theoryImage;
+    theoryScreenshot.className = 'theory-screenshot';
+    showStep(6);
+    await sleep(1500);
+
+    // Zoom to left (text explanation)
+    theoryScreenshot.classList.add('zoom-left');
+    await sleep(2000);
+
+    // Zoom to right (diagram image)
+    theoryScreenshot.classList.remove('zoom-left');
+    theoryScreenshot.classList.add('zoom-right');
+    await sleep(2000);
+
+    // Back to normal
+    theoryScreenshot.classList.remove('zoom-right');
+    await sleep(1500);
+}
+
+// Demo 2: Image Upload → Recipe Result
+async function runImageDemo() {
     // Step 1: Show upload area
     showStep(1);
     await sleep(1500);
@@ -47,23 +99,35 @@ async function runDemo() {
     uploadArea.classList.remove('dragging');
 
     // Step 2: Show uploaded image + analyzing
-    uploadedImage.src = demo.uploadImage;
+    uploadedImage.src = demoData.uploadImage;
     showStep(2);
     await sleep(2500);
 
     // Step 3: Show recipe result
-    recipeScreenshot.src = demo.recipeImage;
+    recipeScreenshot.src = demoData.recipeImage;
     showStep(3);
-
-    isAnimating = false;
+    await sleep(4000);
 }
 
-// Demo loop
+// Main demo loop
 async function startDemoLoop() {
     while (true) {
-        await runDemo();
-        // Wait before next demo
-        await sleep(5000);
+        if (isAnimating) {
+            await sleep(100);
+            continue;
+        }
+
+        isAnimating = true;
+
+        // Demo 1: Text question first
+        await runTextDemo();
+        await sleep(1000);
+
+        // Demo 2: Image upload second
+        await runImageDemo();
+        await sleep(1000);
+
+        isAnimating = false;
     }
 }
 

@@ -361,6 +361,80 @@ body {
     }
 }
 
+/* Demo 2: Text Question Styles */
+.chat-input-demo {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+}
+
+.chat-input-box {
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: 24px;
+    padding: 14px 20px;
+    font-size: 15px;
+    color: var(--gray-700);
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+}
+
+.chat-input-box.sent-message {
+    background: var(--gray-900);
+    color: var(--white);
+    border: none;
+}
+
+.typing-text {
+    color: var(--gray-800);
+}
+
+.cursor {
+    animation: blink 1s infinite;
+    color: var(--gray-400);
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Theory Result with Zoom */
+.theory-result {
+    text-align: center;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.theory-screenshot-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.theory-screenshot {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    object-position: center;
+    transition: all 1.5s ease;
+}
+
+/* Zoom to left side (text explanation) */
+.theory-screenshot.zoom-left {
+    transform: scale(1.8) translateX(20%);
+    object-position: left center;
+}
+
+/* Zoom to right side (diagram image) */
+.theory-screenshot.zoom-right {
+    transform: scale(1.8) translateX(-20%);
+    object-position: right center;
+}
+
 .chat-area {
     display: flex;
     flex-direction: column;

@@ -56,6 +56,7 @@
                     <span class="demo-title">HAIRGATOR AI STUDIO</span>
                 </div>
                 <div class="demo-body">
+                    <!-- Demo 1: Image Upload -->
                     <!-- Step 1: Upload Area -->
                     <div class="demo-step" id="step1">
                         <div class="upload-area" id="uploadArea">
@@ -87,6 +88,39 @@
                     <div class="demo-step hidden" id="step3">
                         <div class="result-screenshot">
                             <img src="" alt="AI 생성 레시피" class="recipe-screenshot" id="recipeScreenshot">
+                        </div>
+                    </div>
+
+                    <!-- Demo 2: Text Question -->
+                    <!-- Step 4: Text Input -->
+                    <div class="demo-step hidden" id="step4">
+                        <div class="chat-input-demo">
+                            <div class="chat-input-box">
+                                <span class="typing-text" id="typingText"></span>
+                                <span class="cursor">|</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: AI Responding -->
+                    <div class="demo-step hidden" id="step5">
+                        <div class="chat-input-demo sent">
+                            <div class="chat-input-box sent-message">
+                                A존, B존, C존에 대해 설명해줘
+                            </div>
+                        </div>
+                        <div class="analysis-status">
+                            <div class="analysis-spinner"></div>
+                            <span>AI가 답변을 생성하고 있습니다...</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 6: Theory Result with Zoom -->
+                    <div class="demo-step hidden" id="step6">
+                        <div class="theory-result">
+                            <div class="theory-screenshot-container" id="theoryContainer">
+                                <img src="" alt="이론 설명" class="theory-screenshot" id="theoryScreenshot">
+                            </div>
                         </div>
                     </div>
                 </div>
