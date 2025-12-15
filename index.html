@@ -75,7 +75,12 @@
         <!-- Real Usage Photo -->
         <div class="real-usage-container">
             <img src="images/salon-scene.jpg" alt="실제 매장에서 헤어메뉴판 사용 장면" class="real-usage-photo">
-            <p class="real-usage-caption">실제 미용실에서 태블릿 메뉴판으로 고객 상담하는 모습</p>
+            <p class="real-usage-caption">
+                현재 <span class="female-count">여성 <span id="femaleStyleCount">-</span>개</span>,
+                <span class="male-count">남성 <span id="maleStyleCount">-</span>개</span>
+                포트폴리오가 준비되어 있습니다.<br>
+                <span class="free-trial">무료로 이용해 보세요!</span>
+            </p>
         </div>
 
         <!-- Interactive Demo - Menu Slideshow -->
@@ -237,6 +242,47 @@
         </div>
     </footer>
 
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script>
+        // Firebase 초기화
+        const firebaseConfig = {
+            apiKey: "AIzaSyBeTIHZwgx36hR-F35QPtGG2xvE5EY0XmY",
+            authDomain: "hairgatormenu-4a43e.firebaseapp.com",
+            projectId: "hairgatormenu-4a43e",
+            storageBucket: "hairgatormenu-4a43e.firebasestorage.app",
+            messagingSenderId: "800038006875",
+            appId: "1:800038006875:web:2a4de70e3a306986e0cf7e"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // 스타일 수 불러오기
+        async function loadStyleCounts() {
+            try {
+                const snapshot = await db.collection('styles').get();
+                let maleCount = 0;
+                let femaleCount = 0;
+
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    if (data.gender === 'male') maleCount++;
+                    if (data.gender === 'female') femaleCount++;
+                });
+
+                document.getElementById('femaleStyleCount').textContent = femaleCount.toLocaleString();
+                document.getElementById('maleStyleCount').textContent = maleCount.toLocaleString();
+            } catch (error) {
+                console.error('스타일 수 로드 실패:', error);
+                document.getElementById('femaleStyleCount').textContent = '2,000+';
+                document.getElementById('maleStyleCount').textContent = '1,000+';
+            }
+        }
+
+        // 페이지 로드 시 실행
+        document.addEventListener('DOMContentLoaded', loadStyleCounts);
+    </script>
     <script src="js/main.js"></script>
 </body>
 </html>

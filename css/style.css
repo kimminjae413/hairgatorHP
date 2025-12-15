@@ -370,9 +370,27 @@ body {
 
 .real-usage-caption {
     margin-top: 20px;
-    font-size: 15px;
-    color: var(--gray-500);
-    font-weight: 400;
+    font-size: 16px;
+    color: var(--gray-600);
+    font-weight: 500;
+    line-height: 1.8;
+}
+
+.real-usage-caption .female-count {
+    color: #e91e63;
+    font-weight: 700;
+}
+
+.real-usage-caption .male-count {
+    color: #2196f3;
+    font-weight: 700;
+}
+
+.real-usage-caption .free-trial {
+    display: inline-block;
+    margin-top: 4px;
+    color: var(--rose-600);
+    font-weight: 600;
 }
 
 /* Demo Container */
