@@ -1328,6 +1328,7 @@ body::before {
     flex-direction: column;
     gap: 16px;
     animation: canvasFadeIn 0.6s var(--ease-out-expo);
+    overflow: hidden;
 }
 
 @keyframes canvasFadeIn {
@@ -1341,6 +1342,17 @@ body::before {
     object-fit: contain;
     border-radius: 4px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.8s var(--ease-out-expo);
+}
+
+.canvas-result img.zoom-left {
+    transform: scale(2.2);
+    transform-origin: left center;
+}
+
+.canvas-result img.zoom-right {
+    transform: scale(2.2);
+    transform-origin: right center;
 }
 
 /* Analysis Effects */

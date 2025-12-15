@@ -204,12 +204,19 @@ const chatDemoScript = [
         delay: 1500
     },
     {
-        type: 'zoomCanvas',
-        delay: 1000
+        type: 'imageZoom',
+        position: 'left',
+        delay: 1500
     },
     {
-        type: 'zoomOut',
-        delay: 3000
+        type: 'imageZoom',
+        position: 'right',
+        delay: 2500
+    },
+    {
+        type: 'imageZoom',
+        position: 'reset',
+        delay: 2500
     },
     {
         type: 'reset',
@@ -389,21 +396,15 @@ async function runChatDemo() {
                     }
                     break;
 
-                case 'zoomCanvas':
-                    const chatPanel = document.querySelector('.demo-chat-panel');
-                    const canvasPanel = document.querySelector('.demo-canvas-panel');
-                    if (chatPanel && canvasPanel) {
-                        canvasPanel.classList.add('zoom-in');
-                        chatPanel.classList.add('zoom-out-panel');
-                    }
-                    break;
-
-                case 'zoomOut':
-                    const chatPanelOut = document.querySelector('.demo-chat-panel');
-                    const canvasPanelOut = document.querySelector('.demo-canvas-panel');
-                    if (chatPanelOut && canvasPanelOut) {
-                        canvasPanelOut.classList.remove('zoom-in');
-                        chatPanelOut.classList.remove('zoom-out-panel');
+                case 'imageZoom':
+                    const canvasImg = document.querySelector('.canvas-result img');
+                    if (canvasImg) {
+                        canvasImg.classList.remove('zoom-left', 'zoom-right');
+                        if (step.position === 'left') {
+                            canvasImg.classList.add('zoom-left');
+                        } else if (step.position === 'right') {
+                            canvasImg.classList.add('zoom-right');
+                        }
                     }
                     break;
 
