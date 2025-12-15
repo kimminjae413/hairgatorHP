@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>OG Thumbnail Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #f5f5f5;
+            padding: 40px;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .instructions {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #666;
+        }
+
+        .thumbnail {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #1a1918 0%, #2a2928 50%, #1a1918 100%);
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+        }
+
+        /* 배경 글로우 효과 */
+        .glow-1 {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(233, 30, 99, 0.3) 0%, transparent 70%);
+            top: -200px;
+            right: -100px;
+            filter: blur(60px);
+        }
+
+        .glow-2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(233, 30, 99, 0.2) 0%, transparent 70%);
+            bottom: -100px;
+            left: -50px;
+            filter: blur(40px);
+        }
+
+        /* 그리드 패턴 */
+        .grid-pattern {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* 컨텐츠 */
+        .content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 60px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 280px;
+            margin-bottom: 40px;
+        }
+
+        .tagline {
+            font-size: 42px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.4;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .tagline .highlight {
+            background: linear-gradient(135deg, #e91e63 0%, #ec407a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+        }
+
+        /* 하단 장식 라인 */
+        .bottom-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #e91e63, #ec407a, #e91e63);
+        }
+
+        /* 코너 장식 */
+        .corner {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 2px solid rgba(233, 30, 99, 0.3);
+        }
+
+        .corner-tl {
+            top: 30px;
+            left: 30px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .corner-tr {
+            top: 30px;
+            right: 30px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .corner-bl {
+            bottom: 30px;
+            left: 30px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .corner-br {
+            bottom: 30px;
+            right: 30px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* 키워드 태그 */
+        .tags {
+            display: flex;
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .tag {
+            padding: 10px 20px;
+            background: rgba(233, 30, 99, 0.15);
+            border: 1px solid rgba(233, 30, 99, 0.3);
+            border-radius: 100px;
+            color: #ec407a;
+            font-size: 16px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <p><strong>사용법:</strong> 아래 썸네일을 스크린샷으로 캡처하여 <code>images/og-thumbnail.png</code>로 저장하세요.</p>
+        <p>권장 크기: 1200 x 630 픽셀</p>
+    </div>
+
+    <div class="thumbnail">
+        <div class="glow-1"></div>
+        <div class="glow-2"></div>
+        <div class="grid-pattern"></div>
+
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+
+        <div class="content">
+            <img src="images/헤어게이터가로로고.png" alt="HAIRGATOR" class="logo">
+            <p class="tagline">
+                감각에 데이터를 더해<br>
+                기술을 <span class="highlight">확신</span>으로
+            </p>
+            <p class="subtitle">AI 헤어 솔루션</p>
+            <div class="tags">
+                <span class="tag">스타일 메뉴판</span>
+                <span class="tag">AI 레시피</span>
+                <span class="tag">커트 & 펌</span>
+            </div>
+        </div>
+
+        <div class="bottom-line"></div>
+    </div>
+</body>
+</html>
