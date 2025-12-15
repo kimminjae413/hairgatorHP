@@ -1440,14 +1440,11 @@ body {
 .footer-logo {
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-weight: 700;
-    font-size: 18px;
 }
 
 .footer-logo img {
-    width: 32px;
-    height: 32px;
+    height: 28px;
+    width: auto;
 }
 
 .footer-text {
