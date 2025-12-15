@@ -40,6 +40,7 @@
                 <a href="#about">소개</a>
                 <a href="#style-menu">스타일 메뉴</a>
                 <a href="#ai-recipe">AI 레시피</a>
+                <div id="google_translate_element"></div>
                 <div class="header-store-buttons">
                     <a href="https://apps.apple.com/kr/app/헤어게이터/id1587833071" class="header-store-btn" target="_blank" title="App Store">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -344,5 +345,18 @@
         document.addEventListener('DOMContentLoaded', loadStyleCounts);
     </script>
     <script src="js/main.js"></script>
+
+    <!-- Google Translate -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'ko',
+                includedLanguages: 'en,ja,zh-CN,zh-TW,vi,th,id',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>

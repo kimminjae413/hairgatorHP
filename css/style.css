@@ -562,6 +562,65 @@ body {
     font-weight: 600;
 }
 
+/* Google Translate Widget */
+#google_translate_element {
+    display: flex;
+    align-items: center;
+}
+
+#google_translate_element select {
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 13px;
+    color: var(--gray-700);
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+#google_translate_element select:hover {
+    border-color: var(--rose-400);
+    background: var(--rose-50);
+}
+
+/* 번역 바 숨기기 */
+.goog-te-banner-frame {
+    display: none !important;
+}
+
+body {
+    top: 0 !important;
+}
+
+.goog-te-gadget {
+    font-family: inherit !important;
+}
+
+.goog-te-gadget-simple {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    font-size: 13px !important;
+}
+
+.goog-te-gadget-simple .goog-te-menu-value {
+    color: var(--gray-600) !important;
+}
+
+.goog-te-gadget-simple .goog-te-menu-value:hover {
+    color: var(--rose-600) !important;
+}
+
+.goog-te-gadget-icon {
+    display: none !important;
+}
+
+.goog-te-gadget-simple > span {
+    border: none !important;
+}
+
 /* Header App Store Buttons */
 .header-store-buttons {
     display: flex;
