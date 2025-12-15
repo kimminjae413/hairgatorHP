@@ -23,12 +23,12 @@
     --ivory: #faf9f7;
     --white: #ffffff;
 
-    /* Accent - Refined Magenta */
-    --accent: #e91e63;
-    --accent-light: #ff4081;
-    --accent-dark: #c2185b;
-    --accent-glow: rgba(233, 30, 99, 0.15);
-    --accent-subtle: rgba(233, 30, 99, 0.08);
+    /* Accent - HAIRGATOR Magenta */
+    --accent: #c9007a;
+    --accent-light: #e91e8c;
+    --accent-dark: #a00062;
+    --accent-glow: rgba(201, 0, 122, 0.15);
+    --accent-subtle: rgba(201, 0, 122, 0.08);
 
     /* Typography */
     --font-display: 'Cormorant Garamond', 'Noto Sans KR', Georgia, serif;
