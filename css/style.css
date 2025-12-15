@@ -415,9 +415,12 @@ body {
 }
 
 .click-indicator svg {
-    color: var(--white);
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
-    animation: cursorBounce 0.8s ease-in-out infinite;
+    animation: fingerTap 1s ease-in-out infinite;
+}
+
+@keyframes fingerTap {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(5px) scale(0.95); }
 }
 
 @keyframes cursorBounce {
