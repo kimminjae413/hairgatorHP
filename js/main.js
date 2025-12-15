@@ -1,51 +1,11 @@
 // HAIRGATOR Homepage - Interactive Image → Recipe Demo
 
-const demos = [
-    {
-        styleImage: '메뉴판/app-female.jpg',
-        diagramImage: '레시피/레시피2.png',
-        badge: '여성 커트',
-        name: '허쉬컷',
-        details: [
-            { label: '베이스', value: '원랭스 보브' },
-            { label: '길이', value: '쇄골 라인' },
-            { label: '레이어', value: 'C존 45도' },
-            { label: '텍스쳐', value: '슬라이싱' },
-            { label: '페이스라인', value: '턱선 프레이밍' },
-            { label: '볼륨', value: '뿌리 볼륨펌' }
-        ]
-    },
-    {
-        styleImage: '메뉴판/app-male.png',
-        diagramImage: '레시피/레시피4.png',
-        badge: '남성 커트',
-        name: '투블럭 댄디컷',
-        details: [
-            { label: '사이드', value: '3mm 페이드' },
-            { label: '연결부', value: '6mm 그라데이션' },
-            { label: '탑 길이', value: '5-7cm' },
-            { label: '텍스쳐', value: '포인트컷' },
-            { label: '스타일링', value: '내추럴 업' },
-            { label: '볼륨', value: '탑 볼륨' }
-        ]
-    },
-    {
-        styleImage: '레시피/레시피3.jpg',
-        diagramImage: '레시피/레시피2.png',
-        badge: '여성 펌',
-        name: 'S컬 웨이브펌',
-        details: [
-            { label: '로드', value: '17mm' },
-            { label: '와인딩', value: '스파이럴' },
-            { label: '각도', value: '천체축 45도' },
-            { label: '처리시간', value: '15-20분' },
-            { label: '타겟존', value: 'B존~C존' },
-            { label: '텐션', value: '중간 텐션' }
-        ]
-    }
-];
+// Demo data
+const demo = {
+    uploadImage: 'demo/남자이미지.jpg',
+    recipeImage: 'demo/남자레시피.jpg'
+};
 
-let currentDemoIndex = 0;
 let isAnimating = false;
 
 // DOM Elements
@@ -54,11 +14,7 @@ const step2 = document.getElementById('step2');
 const step3 = document.getElementById('step3');
 const uploadArea = document.getElementById('uploadArea');
 const uploadedImage = document.getElementById('uploadedImage');
-const resultOriginal = document.getElementById('resultOriginal');
-const resultDiagram = document.getElementById('resultDiagram');
-const recipeBadge = document.getElementById('recipeBadge');
-const recipeName = document.getElementById('recipeName');
-const recipeDetails = document.getElementById('recipeDetails');
+const recipeScreenshot = document.getElementById('recipeScreenshot');
 
 // Show step
 function showStep(stepNum) {
@@ -71,18 +27,13 @@ function showStep(stepNum) {
     if (stepNum === 3) step3.classList.remove('hidden');
 }
 
-// Build recipe details HTML
-function buildRecipeDetails(details) {
-    return details.map(item => `
-        <div class="recipe-detail-item">
-            <span class="recipe-detail-label">${item.label}</span>
-            <span class="recipe-detail-value">${item.value}</span>
-        </div>
-    `).join('');
+// Sleep helper
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 // Run demo animation
-async function runDemo(demo) {
+async function runDemo() {
     if (isAnimating) return;
     isAnimating = true;
 
@@ -96,36 +47,23 @@ async function runDemo(demo) {
     uploadArea.classList.remove('dragging');
 
     // Step 2: Show uploaded image + analyzing
-    uploadedImage.src = demo.styleImage;
+    uploadedImage.src = demo.uploadImage;
     showStep(2);
     await sleep(2500);
 
-    // Step 3: Show result
-    resultOriginal.src = demo.styleImage;
-    resultDiagram.src = demo.diagramImage;
-    recipeBadge.textContent = demo.badge;
-    recipeName.textContent = demo.name;
-    recipeDetails.innerHTML = buildRecipeDetails(demo.details);
+    // Step 3: Show recipe result
+    recipeScreenshot.src = demo.recipeImage;
     showStep(3);
 
     isAnimating = false;
 }
 
-// Sleep helper
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 // Demo loop
 async function startDemoLoop() {
     while (true) {
-        await runDemo(demos[currentDemoIndex]);
-
+        await runDemo();
         // Wait before next demo
         await sleep(5000);
-
-        // Next demo
-        currentDemoIndex = (currentDemoIndex + 1) % demos.length;
     }
 }
 

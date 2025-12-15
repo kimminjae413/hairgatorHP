@@ -336,100 +336,29 @@ body {
     to { transform: rotate(360deg); }
 }
 
-/* Step 3: Result */
-.result-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.result-images {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-}
-
-.result-image-box {
+/* Step 3: Result Screenshot */
+.result-screenshot {
     text-align: center;
+    animation: fadeInUp 0.5s ease;
 }
 
-.result-image {
-    width: 140px;
-    height: 140px;
-    object-fit: cover;
+.recipe-screenshot {
+    max-width: 100%;
+    max-height: 350px;
+    object-fit: contain;
     border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
-.result-arrow {
-    font-size: 24px;
-    color: var(--gray-400);
-    font-weight: 300;
-}
-
-.image-caption {
-    display: block;
-    margin-top: 8px;
-    font-size: 12px;
-    color: var(--gray-500);
-}
-
-/* Recipe Card Full */
-.recipe-card-full {
-    background: var(--white);
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-}
-
-.recipe-header-full {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--gray-200);
-}
-
-.recipe-badge {
-    background: var(--gray-900);
-    color: var(--white);
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 600;
-}
-
-.recipe-name {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--gray-900);
-}
-
-.recipe-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-.recipe-detail-item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.recipe-detail-label {
-    font-size: 11px;
-    color: var(--gray-400);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.recipe-detail-value {
-    font-size: 14px;
-    color: var(--gray-700);
-    font-weight: 500;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .chat-area {
