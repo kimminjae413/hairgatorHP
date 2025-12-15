@@ -1460,7 +1460,8 @@ body {
 }
 
 .footer-address,
-.footer-phone {
+.footer-phone,
+.footer-email {
     font-size: 13px;
     color: var(--gray-500);
     margin: 4px 0;
