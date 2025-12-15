@@ -232,8 +232,204 @@ body {
 
 .demo-body {
     padding: 24px;
-    min-height: 300px;
+    min-height: 400px;
     background: var(--gray-50);
+}
+
+/* Demo Steps */
+.demo-step {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Upload Area */
+.upload-area {
+    border: 2px dashed var(--gray-300);
+    border-radius: 16px;
+    padding: 60px 40px;
+    text-align: center;
+    background: var(--white);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.upload-area:hover {
+    border-color: var(--gray-400);
+    background: var(--gray-100);
+}
+
+.upload-area.dragging {
+    border-color: var(--gray-900);
+    background: var(--gray-100);
+    transform: scale(1.02);
+}
+
+.upload-icon {
+    margin-bottom: 16px;
+    color: var(--gray-400);
+}
+
+.upload-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--gray-700);
+    margin-bottom: 8px;
+}
+
+.upload-hint {
+    font-size: 13px;
+    color: var(--gray-400);
+}
+
+/* Step 2: Uploaded Image + Analysis */
+.uploaded-image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.uploaded-image {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    animation: scaleIn 0.4s ease;
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.image-label {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--gray-500);
+}
+
+.analysis-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px;
+    background: var(--white);
+    border-radius: 12px;
+    font-size: 14px;
+    color: var(--gray-600);
+}
+
+.analysis-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--gray-200);
+    border-top-color: var(--gray-900);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Step 3: Result */
+.result-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.result-images {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.result-image-box {
+    text-align: center;
+}
+
+.result-image {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.result-arrow {
+    font-size: 24px;
+    color: var(--gray-400);
+    font-weight: 300;
+}
+
+.image-caption {
+    display: block;
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--gray-500);
+}
+
+/* Recipe Card Full */
+.recipe-card-full {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.recipe-header-full {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.recipe-badge {
+    background: var(--gray-900);
+    color: var(--white);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.recipe-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gray-900);
+}
+
+.recipe-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.recipe-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.recipe-detail-label {
+    font-size: 11px;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.recipe-detail-value {
+    font-size: 14px;
+    color: var(--gray-700);
+    font-weight: 500;
 }
 
 .chat-area {
@@ -567,5 +763,28 @@ body {
         flex-direction: column;
         gap: 16px;
         text-align: center;
+    }
+
+    /* Demo responsive */
+    .upload-area {
+        padding: 40px 20px;
+    }
+
+    .result-images {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .result-arrow {
+        transform: rotate(90deg);
+    }
+
+    .result-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .recipe-details {
+        grid-template-columns: 1fr;
     }
 }

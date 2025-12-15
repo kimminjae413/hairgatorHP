@@ -56,29 +56,55 @@
                     <span class="demo-title">HAIRGATOR AI STUDIO</span>
                 </div>
                 <div class="demo-body">
-                    <div class="chat-area">
-                        <!-- User Message -->
-                        <div class="message user-message" id="userMessage">
-                            <div class="message-content">
-                                <span class="typing-text" id="typingText"></span>
-                                <span class="cursor">|</span>
+                    <!-- Step 1: Upload Area -->
+                    <div class="demo-step" id="step1">
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="17 8 12 3 7 8"/>
+                                    <line x1="12" y1="3" x2="12" y2="15"/>
+                                </svg>
                             </div>
+                            <p class="upload-text">원하는 스타일 이미지를 업로드하세요</p>
+                            <span class="upload-hint">드래그 앤 드롭 또는 클릭</span>
                         </div>
+                    </div>
 
-                        <!-- AI Response -->
-                        <div class="message ai-message hidden" id="aiMessage">
-                            <div class="message-avatar">AI</div>
-                            <div class="message-content">
-                                <div class="loading-dots" id="loadingDots">
-                                    <span></span><span></span><span></span>
+                    <!-- Step 2: Image Uploaded + Analyzing -->
+                    <div class="demo-step hidden" id="step2">
+                        <div class="uploaded-image-container">
+                            <img src="" alt="업로드된 이미지" class="uploaded-image" id="uploadedImage">
+                            <div class="image-label">업로드된 스타일</div>
+                        </div>
+                        <div class="analysis-status" id="analysisStatus">
+                            <div class="analysis-spinner"></div>
+                            <span>AI가 이미지를 분석하고 있습니다...</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Recipe Result -->
+                    <div class="demo-step hidden" id="step3">
+                        <div class="result-container">
+                            <div class="result-images">
+                                <div class="result-image-box">
+                                    <img src="" alt="원본 스타일" class="result-image" id="resultOriginal">
+                                    <span class="image-caption">원본 스타일</span>
                                 </div>
-                                <div class="recipe-card hidden" id="recipeCard">
-                                    <div class="recipe-header">
-                                        <span class="recipe-icon">✂️</span>
-                                        <span class="recipe-title" id="recipeTitle">허쉬컷 레시피</span>
+                                <div class="result-arrow">→</div>
+                                <div class="result-image-box">
+                                    <img src="" alt="레시피 도해도" class="result-image" id="resultDiagram">
+                                    <span class="image-caption">레시피 도해도</span>
+                                </div>
+                            </div>
+                            <div class="result-recipe">
+                                <div class="recipe-card-full">
+                                    <div class="recipe-header-full">
+                                        <span class="recipe-badge" id="recipeBadge">여성 커트</span>
+                                        <h3 class="recipe-name" id="recipeName">허쉬컷</h3>
                                     </div>
-                                    <div class="recipe-body" id="recipeBody">
-                                        <!-- Recipe content will be inserted here -->
+                                    <div class="recipe-details" id="recipeDetails">
+                                        <!-- Recipe details will be inserted here -->
                                     </div>
                                 </div>
                             </div>

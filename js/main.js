@@ -1,48 +1,46 @@
-// HAIRGATOR Homepage - Interactive Demo
+// HAIRGATOR Homepage - Interactive Image → Recipe Demo
 
 const demos = [
     {
-        question: "허쉬컷 레시피 알려줘",
-        icon: "✂️",
-        title: "허쉬컷 레시피",
-        recipe: [
-            "베이스: 원랭스 보브 (쇄골 라인)",
-            "레이어: C존 45도 그라데이션",
-            "페이스라인: 턱선 프레이밍",
-            "텍스쳐: 슬라이싱 + 포인트컷"
+        styleImage: '메뉴판/app-female.jpg',
+        diagramImage: '레시피/레시피2.png',
+        badge: '여성 커트',
+        name: '허쉬컷',
+        details: [
+            { label: '베이스', value: '원랭스 보브' },
+            { label: '길이', value: '쇄골 라인' },
+            { label: '레이어', value: 'C존 45도' },
+            { label: '텍스쳐', value: '슬라이싱' },
+            { label: '페이스라인', value: '턱선 프레이밍' },
+            { label: '볼륨', value: '뿌리 볼륨펌' }
         ]
     },
     {
-        question: "뿌리펌 와인딩 각도는?",
-        icon: "🌀",
-        title: "뿌리펌 가이드",
-        recipe: [
-            "로드 크기: 17mm (뿌리 볼륨용)",
-            "와인딩 각도: 천체축 90도",
-            "텐션: 중간 텐션 유지",
-            "처리시간: 15-20분 (모질에 따라)"
+        styleImage: '메뉴판/app-male.png',
+        diagramImage: '레시피/레시피4.png',
+        badge: '남성 커트',
+        name: '투블럭 댄디컷',
+        details: [
+            { label: '사이드', value: '3mm 페이드' },
+            { label: '연결부', value: '6mm 그라데이션' },
+            { label: '탑 길이', value: '5-7cm' },
+            { label: '텍스쳐', value: '포인트컷' },
+            { label: '스타일링', value: '내추럴 업' },
+            { label: '볼륨', value: '탑 볼륨' }
         ]
     },
     {
-        question: "C존이 뭐야?",
-        icon: "📐",
-        title: "C존 (Crown Zone)",
-        recipe: [
-            "위치: 정수리 위쪽 영역",
-            "역할: 볼륨 형성, 윤곽 조절",
-            "특징: 소프트한 질감 담당",
-            "기법: Internal 레이어 적용"
-        ]
-    },
-    {
-        question: "남자 투블럭 레시피",
-        icon: "💈",
-        title: "남자 투블럭 레시피",
-        recipe: [
-            "사이드: 3mm 페이드 시작",
-            "연결부: 6mm 그라데이션",
-            "탑: 5-7cm 텍스쳐 레이어",
-            "마무리: 슬라이싱으로 가벼움"
+        styleImage: '레시피/레시피3.jpg',
+        diagramImage: '레시피/레시피2.png',
+        badge: '여성 펌',
+        name: 'S컬 웨이브펌',
+        details: [
+            { label: '로드', value: '17mm' },
+            { label: '와인딩', value: '스파이럴' },
+            { label: '각도', value: '천체축 45도' },
+            { label: '처리시간', value: '15-20분' },
+            { label: '타겟존', value: 'B존~C존' },
+            { label: '텐션', value: '중간 텐션' }
         ]
     }
 ];
@@ -51,86 +49,71 @@ let currentDemoIndex = 0;
 let isAnimating = false;
 
 // DOM Elements
-const typingText = document.getElementById('typingText');
-const userMessage = document.getElementById('userMessage');
-const aiMessage = document.getElementById('aiMessage');
-const loadingDots = document.getElementById('loadingDots');
-const recipeCard = document.getElementById('recipeCard');
-const recipeTitle = document.getElementById('recipeTitle');
-const recipeBody = document.getElementById('recipeBody');
+const step1 = document.getElementById('step1');
+const step2 = document.getElementById('step2');
+const step3 = document.getElementById('step3');
+const uploadArea = document.getElementById('uploadArea');
+const uploadedImage = document.getElementById('uploadedImage');
+const resultOriginal = document.getElementById('resultOriginal');
+const resultDiagram = document.getElementById('resultDiagram');
+const recipeBadge = document.getElementById('recipeBadge');
+const recipeName = document.getElementById('recipeName');
+const recipeDetails = document.getElementById('recipeDetails');
 
-// Typing animation
-function typeText(text, element, speed = 50) {
-    return new Promise(resolve => {
-        let i = 0;
-        element.textContent = '';
+// Show step
+function showStep(stepNum) {
+    step1.classList.add('hidden');
+    step2.classList.add('hidden');
+    step3.classList.add('hidden');
 
-        const typing = setInterval(() => {
-            if (i < text.length) {
-                element.textContent += text.charAt(i);
-                i++;
-            } else {
-                clearInterval(typing);
-                resolve();
-            }
-        }, speed);
-    });
+    if (stepNum === 1) step1.classList.remove('hidden');
+    if (stepNum === 2) step2.classList.remove('hidden');
+    if (stepNum === 3) step3.classList.remove('hidden');
 }
 
-// Show recipe with animation
-function showRecipe(demo) {
-    // Update recipe content
-    recipeTitle.textContent = demo.title;
-    document.querySelector('.recipe-icon').textContent = demo.icon;
-
-    // Build recipe items
-    recipeBody.innerHTML = demo.recipe
-        .map(item => `<div class="recipe-item">${item}</div>`)
-        .join('');
-
-    // Hide loading, show recipe
-    loadingDots.classList.add('hidden');
-    recipeCard.classList.remove('hidden');
-
-    // Trigger animation
-    setTimeout(() => {
-        recipeCard.classList.add('show');
-    }, 50);
+// Build recipe details HTML
+function buildRecipeDetails(details) {
+    return details.map(item => `
+        <div class="recipe-detail-item">
+            <span class="recipe-detail-label">${item.label}</span>
+            <span class="recipe-detail-value">${item.value}</span>
+        </div>
+    `).join('');
 }
 
-// Reset demo state
-function resetDemo() {
-    typingText.textContent = '';
-    aiMessage.classList.add('hidden');
-    loadingDots.classList.remove('hidden');
-    recipeCard.classList.add('hidden');
-    recipeCard.classList.remove('show');
-}
-
-// Run single demo animation
+// Run demo animation
 async function runDemo(demo) {
     if (isAnimating) return;
     isAnimating = true;
 
-    // Reset state
-    resetDemo();
+    // Step 1: Show upload area
+    showStep(1);
+    await sleep(1500);
 
-    // Type the question
-    await typeText(demo.question, typingText, 60);
+    // Simulate drag effect
+    uploadArea.classList.add('dragging');
+    await sleep(800);
+    uploadArea.classList.remove('dragging');
 
-    // Wait a bit
-    await new Promise(r => setTimeout(r, 600));
+    // Step 2: Show uploaded image + analyzing
+    uploadedImage.src = demo.styleImage;
+    showStep(2);
+    await sleep(2500);
 
-    // Show AI message with loading
-    aiMessage.classList.remove('hidden');
-
-    // Wait for "thinking"
-    await new Promise(r => setTimeout(r, 1500));
-
-    // Show recipe
-    showRecipe(demo);
+    // Step 3: Show result
+    resultOriginal.src = demo.styleImage;
+    resultDiagram.src = demo.diagramImage;
+    recipeBadge.textContent = demo.badge;
+    recipeName.textContent = demo.name;
+    recipeDetails.innerHTML = buildRecipeDetails(demo.details);
+    showStep(3);
 
     isAnimating = false;
+}
+
+// Sleep helper
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 // Demo loop
@@ -139,27 +122,11 @@ async function startDemoLoop() {
         await runDemo(demos[currentDemoIndex]);
 
         // Wait before next demo
-        await new Promise(r => setTimeout(r, 4000));
+        await sleep(5000);
 
         // Next demo
         currentDemoIndex = (currentDemoIndex + 1) % demos.length;
     }
-}
-
-// Intersection Observer for demo
-function setupDemoObserver() {
-    const demoContainer = document.querySelector('.demo-container');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !isAnimating) {
-                // Start demo when visible
-                runDemo(demos[currentDemoIndex]);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    observer.observe(demoContainer);
 }
 
 // Header scroll effect
