@@ -1671,6 +1671,14 @@ body {
     font-weight: 400;
 }
 
+.section-subtitle .highlight {
+    background: var(--gradient-rose);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
 .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
