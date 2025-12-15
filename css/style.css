@@ -92,7 +92,7 @@ body {
 
 .about-image {
     width: 100%;
-    max-width: 400px;
+    max-width: 700px;
 }
 
 .about-image img {
@@ -144,7 +144,7 @@ body {
     }
 
     .about-image {
-        max-width: 280px;
+        max-width: 100%;
     }
 }
 
