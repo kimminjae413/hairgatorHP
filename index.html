@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAIRGATOR - AI 헤어 레시피</title>
+    <meta name="description" content="AI가 만드는 헤어 레시피. 스타일 사진만 올리면 커트/펌 레시피가 자동 생성됩니다.">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo">
+                <img src="logo.png" alt="HAIRGATOR">
+                <span>HAIRGATOR</span>
+            </a>
+            <nav class="nav">
+                <a href="#features">기능</a>
+                <a href="#demo">데모</a>
+                <a href="https://hairgator.netlify.app" class="btn-start" target="_blank">시작하기</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="highlight">AI</span>가 만드는<br>
+                헤어 레시피
+            </h1>
+            <p class="hero-subtitle">
+                스타일 사진만 올리면<br>
+                커트/펌 레시피가 자동 생성됩니다
+            </p>
+            <a href="https://hairgator.netlify.app" class="btn-primary" target="_blank">
+                무료로 시작하기
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Interactive Demo -->
+        <div class="demo-container" id="demo">
+            <div class="demo-window">
+                <div class="demo-header">
+                    <div class="demo-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <span class="demo-title">HAIRGATOR AI STUDIO</span>
+                </div>
+                <div class="demo-body">
+                    <div class="chat-area">
+                        <!-- User Message -->
+                        <div class="message user-message" id="userMessage">
+                            <div class="message-content">
+                                <span class="typing-text" id="typingText"></span>
+                                <span class="cursor">|</span>
+                            </div>
+                        </div>
+
+                        <!-- AI Response -->
+                        <div class="message ai-message hidden" id="aiMessage">
+                            <div class="message-avatar">AI</div>
+                            <div class="message-content">
+                                <div class="loading-dots" id="loadingDots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="recipe-card hidden" id="recipeCard">
+                                    <div class="recipe-header">
+                                        <span class="recipe-icon">✂️</span>
+                                        <span class="recipe-title" id="recipeTitle">허쉬컷 레시피</span>
+                                    </div>
+                                    <div class="recipe-body" id="recipeBody">
+                                        <!-- Recipe content will be inserted here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">헤어 디자이너를 위한 AI</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📸</div>
+                    <h3>이미지 → 레시피</h3>
+                    <p>원하는 스타일 사진을 업로드하면<br>AI가 커트/펌 레시피를 생성합니다</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>이론 질문</h3>
+                    <p>헤어 이론, 용어, 테크닉에 대해<br>언제든지 물어보세요</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>5개국어 지원</h3>
+                    <p>한국어, 영어, 일본어, 중국어, 베트남어<br>다국어로 사용 가능합니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>지금 바로 시작하세요</h2>
+            <p>AI 헤어 레시피로 더 스마트하게 일하세요</p>
+            <a href="https://hairgator.netlify.app" class="btn-primary large" target="_blank">
+                HAIRGATOR 시작하기
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="HAIRGATOR">
+                    <span>HAIRGATOR</span>
+                </div>
+                <p class="footer-text">AI Hair Recipe for Designers</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 HAIRGATOR. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
