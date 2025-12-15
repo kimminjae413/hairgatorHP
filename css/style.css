@@ -74,6 +74,85 @@ body {
     }
 }
 
+/* About HAIRGATOR Section */
+.about-section {
+    padding: 140px 24px 80px;
+    background: linear-gradient(180deg, var(--gray-900) 0%, var(--gray-800) 100%);
+    text-align: center;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-image {
+    width: 100%;
+    max-width: 400px;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.about-text {
+    text-align: center;
+}
+
+.about-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+    background: var(--gradient-rose);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.about-description {
+    font-size: 22px;
+    line-height: 1.8;
+    color: var(--gray-300);
+    font-weight: 400;
+}
+
+.about-description .highlight {
+    color: var(--rose-400);
+    font-weight: 600;
+}
+
+.about-description strong {
+    color: var(--white);
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 100px 20px 60px;
+    }
+
+    .about-title {
+        font-size: 36px;
+    }
+
+    .about-description {
+        font-size: 18px;
+    }
+
+    .about-image {
+        max-width: 280px;
+    }
+}
+
 /* Header */
 .header {
     position: fixed;
