@@ -187,23 +187,9 @@ const chatDemoScript = [
         delay: 2000
     },
     {
-        type: 'rapidSlide',
-        images: [
-            'images/SR_MSP1003_01.png',
-            'images/SR_MSP1003_02.png',
-            'images/SR_MSP1003_03.png',
-            'images/SR_MSP1003_04.png',
-            'images/SR_MSP1003_05.png',
-            'images/SR_MSP1003_06.png',
-            'images/SR_MSP1003_07.png',
-            'images/SR_MSP1003_08.png'
-        ],
-        delay: 300
-    },
-    {
         type: 'user',
         message: 'A존이 뭐야?',
-        delay: 1500
+        delay: 2000
     },
     {
         type: 'bot',
