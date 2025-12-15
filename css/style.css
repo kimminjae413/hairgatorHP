@@ -1359,34 +1359,17 @@ body {
 /* CTA Section */
 .cta {
     padding: 120px 24px;
-    background:
-        radial-gradient(ellipse 100% 100% at 50% 100%, rgba(244, 63, 94, 0.15) 0%, transparent 50%),
-        linear-gradient(180deg, var(--rose-600) 0%, var(--rose-700) 50%, var(--rose-800) 100%);
+    background: var(--gray-50);
     text-align: center;
     position: relative;
     overflow: hidden;
-}
-
-.cta::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 50%);
-    animation: cta-glow 15s linear infinite;
-}
-
-@keyframes cta-glow {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    border-top: 1px solid var(--gray-200);
 }
 
 .cta h2 {
     font-size: 36px;
     font-weight: 700;
-    color: var(--white);
+    color: var(--gray-900);
     margin-bottom: 16px;
     position: relative;
     z-index: 1;
@@ -1394,7 +1377,7 @@ body {
 
 .cta p {
     font-size: 18px;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--gray-500);
     margin-bottom: 40px;
     position: relative;
     z-index: 1;
@@ -1420,15 +1403,15 @@ body {
     font-size: 15px;
     font-weight: 600;
     transition: all 0.3s ease;
-    background: var(--white);
-    color: var(--rose-600);
+    background: var(--gray-900);
+    color: var(--white);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .btn-download-cta:hover {
-    background: var(--rose-50);
+    background: var(--gray-800);
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
 }
 
 .btn-download-cta svg {
