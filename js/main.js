@@ -92,7 +92,7 @@ async function typeInInput(text, speed = 60) {
     }
 }
 
-// Show canvas result
+// Show canvas result with reveal animation
 function showCanvasResult(imageSrc) {
     canvasContent.innerHTML = `
         <div class="canvas-result">
@@ -101,11 +101,16 @@ function showCanvasResult(imageSrc) {
     `;
 }
 
-// Show scanning effect on canvas
-function showScanningEffect(imageSrc) {
+// Show AI analyzing effect on canvas
+function showAnalyzingEffect(imageSrc) {
     canvasContent.innerHTML = `
-        <div class="canvas-result scanning-effect">
-            <img src="${imageSrc}" alt="Analyzing...">
+        <div class="canvas-result analyzing-effect">
+            <img src="${imageSrc}" alt="Analyzing..." style="animation: none; opacity: 0.7;">
+            <div class="scan-grid"></div>
+            <div class="pulse-point" style="top: 30%; left: 40%;"></div>
+            <div class="pulse-point" style="top: 45%; left: 55%; animation-delay: 0.3s;"></div>
+            <div class="pulse-point" style="top: 60%; left: 45%; animation-delay: 0.6s;"></div>
+            <div class="analysis-progress"></div>
         </div>
     `;
 }
@@ -163,8 +168,8 @@ async function runImageDemo() {
     addMessage('user', '이 헤어스타일에 맞는 레시피를 만들어주세요', true, demoData.uploadImage);
     await sleep(500);
 
-    // Show scanning effect
-    showScanningEffect(demoData.uploadImage);
+    // Show AI analyzing effect
+    showAnalyzingEffect(demoData.uploadImage);
 
     // Bot typing
     addTypingIndicator();
