@@ -119,10 +119,10 @@ body {
 }
 
 .about-description {
-    font-size: 28px;
+    font-size: 36px;
     line-height: 1.8;
     color: var(--gray-300);
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .about-description .highlight {
@@ -145,7 +145,7 @@ body {
     }
 
     .about-description {
-        font-size: 20px;
+        font-size: 24px;
     }
 
     .about-image {
