@@ -424,13 +424,23 @@ async function runChatDemo() {
 
                 case 'rapidSlide':
                     if (step.images && step.images.length > 0) {
-                        for (let i = 0; i < step.images.length; i++) {
-                            await sleep(150);
-                            canvasContent.innerHTML = `
-                                <div class="canvas-result rapid-slide">
-                                    <img src="${step.images[i]}" alt="슬라이드 ${i + 1}">
-                                </div>
-                            `;
+                        // 남자레시피 이미지 위에 오버레이로 슬라이드
+                        const baseImg = document.querySelector('.canvas-result img');
+                        if (baseImg) {
+                            // 오버레이 컨테이너 생성
+                            const overlay = document.createElement('div');
+                            overlay.className = 'rapid-slide-overlay';
+                            baseImg.parentElement.appendChild(overlay);
+
+                            // 이미지들 빠르게 슬라이드
+                            for (let i = 0; i < step.images.length; i++) {
+                                await sleep(120);
+                                overlay.innerHTML = `<img src="${step.images[i]}" alt="도해도 ${i + 1}">`;
+                            }
+
+                            // 슬라이드 완료 후 오버레이 제거
+                            await sleep(300);
+                            overlay.remove();
                         }
                     }
                     break;

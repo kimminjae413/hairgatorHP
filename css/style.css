@@ -1355,28 +1355,41 @@ body::before {
     transform-origin: right center;
 }
 
-/* Rapid Slide Animation */
-.canvas-result.rapid-slide {
-    animation: rapidFadeIn 0.1s ease-out;
+/* Rapid Slide Overlay - 오른쪽 상단 도해도 영역 */
+.canvas-result {
+    position: relative;
 }
 
-.canvas-result.rapid-slide img {
-    animation: rapidSlideIn 0.15s ease-out;
+.rapid-slide-overlay {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: 45%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
-@keyframes rapidFadeIn {
-    from { opacity: 0.7; }
-    to { opacity: 1; }
+.rapid-slide-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    animation: rapidSlideIn 0.1s ease-out;
 }
 
 @keyframes rapidSlideIn {
     from {
-        opacity: 0.5;
-        transform: scale(0.95);
+        opacity: 0.3;
+        transform: translateX(20px);
     }
     to {
         opacity: 1;
-        transform: scale(1);
+        transform: translateX(0);
     }
 }
 
