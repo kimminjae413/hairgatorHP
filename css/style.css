@@ -189,45 +189,34 @@ body {
     font-size: 18px;
 }
 
-/* App Store Buttons */
-.app-store-buttons {
+/* Header App Store Buttons */
+.header-store-buttons {
     display: flex;
-    gap: 12px;
-    margin-top: 24px;
-    justify-content: center;
-}
-
-.store-btn {
-    display: inline-flex;
-    align-items: center;
     gap: 8px;
-    padding: 12px 20px;
-    border-radius: 10px;
+    align-items: center;
+}
+
+.header-store-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
     text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    background: var(--white);
-    color: var(--gray-700);
-    border: 1px solid var(--gray-200);
+    transition: all 0.2s ease;
+    background: var(--gray-100);
+    color: var(--gray-600);
 }
 
-.store-btn:hover {
-    background: var(--gray-50);
-    border-color: var(--gray-300);
-    transform: translateY(-2px);
+.header-store-btn:hover {
+    background: var(--gray-200);
+    color: var(--gray-900);
+    transform: translateY(-1px);
 }
 
-.store-btn svg {
+.header-store-btn svg {
     flex-shrink: 0;
-}
-
-.store-btn.apple svg {
-    color: var(--gray-800);
-}
-
-.store-btn.google svg {
-    color: #34A853;
 }
 
 /* Demo Container */
@@ -1012,16 +1001,8 @@ body {
         font-size: 16px;
     }
 
-    .app-store-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .store-btn {
-        width: 100%;
-        max-width: 200px;
-        justify-content: center;
+    .header-store-buttons {
+        display: none;
     }
 
     .demo-container {
