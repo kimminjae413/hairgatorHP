@@ -250,6 +250,55 @@ body {
     font-size: 18px;
 }
 
+/* Hero Download Buttons */
+.hero-download-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-download {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background: var(--gray-900);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn-download:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn-download svg {
+    flex-shrink: 0;
+}
+
+.btn-download-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.2;
+}
+
+.btn-download-text .small {
+    font-size: 10px;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-download-text .large {
+    font-size: 16px;
+    font-weight: 600;
+}
+
 /* Header App Store Buttons */
 .header-store-buttons {
     display: flex;
@@ -1051,17 +1100,39 @@ body {
     z-index: 1;
 }
 
-.cta .btn-primary {
-    background: var(--white);
-    color: var(--rose-600);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+/* CTA Download Buttons */
+.cta-download-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
     position: relative;
     z-index: 1;
 }
 
-.cta .btn-primary:hover {
+.btn-download-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background: var(--white);
+    color: var(--rose-600);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-download-cta:hover {
     background: var(--rose-50);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.btn-download-cta svg {
+    flex-shrink: 0;
 }
 
 /* Footer */
@@ -1137,7 +1208,36 @@ body {
     }
 
     .header-store-buttons {
+        display: flex;
+    }
+
+    .nav a:not(.header-store-btn) {
         display: none;
+    }
+
+    .hero-download-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .btn-download {
+        width: 100%;
+        max-width: 220px;
+        justify-content: center;
+        padding: 12px 20px;
+    }
+
+    .cta-download-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .btn-download-cta {
+        width: 100%;
+        max-width: 200px;
+        justify-content: center;
     }
 
     .demo-container {
