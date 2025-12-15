@@ -222,32 +222,13 @@ body::before {
     font-weight: 600;
     letter-spacing: 0.03em;
     text-decoration: none;
-    transition: all 0.4s var(--ease-out-expo);
-    position: relative;
-    overflow: hidden;
-}
-
-.nav .btn-cta-header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--accent);
-    transform: translateY(100%);
-    transition: transform 0.4s var(--ease-out-expo);
-}
-
-.nav .btn-cta-header span {
-    position: relative;
-    z-index: 1;
+    transition: all 0.3s ease;
 }
 
 .nav .btn-cta-header:hover {
+    background: var(--charcoal);
     transform: translateY(-2px);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-}
-
-.nav .btn-cta-header:hover::before {
-    transform: translateY(0);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 /* Header Store Buttons */
