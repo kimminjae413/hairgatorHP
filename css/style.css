@@ -479,6 +479,14 @@ body {
     font-weight: 600;
 }
 
+.real-usage-caption .caption-note {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--gray-400);
+    font-weight: 400;
+}
+
 /* Demo Container */
 .demo-container {
     width: 100%;
