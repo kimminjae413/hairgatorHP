@@ -432,9 +432,9 @@ async function runChatDemo() {
                             overlay.className = 'rapid-slide-overlay';
                             baseImg.parentElement.appendChild(overlay);
 
-                            // 이미지들 빠르게 슬라이드
+                            // 이미지들 슬라이드
                             for (let i = 0; i < step.images.length; i++) {
-                                await sleep(120);
+                                await sleep(350);
                                 overlay.innerHTML = `<img src="${step.images[i]}" alt="도해도 ${i + 1}">`;
                             }
 
