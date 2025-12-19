@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>헤어게이터 - AI 헤어 컬러 레시피</title>
+    <link>https://hairgatorhp.netlify.app</link>
+    <description>AI 기반 헤어 컬러 레시피 서비스, 헤어게이터</description>
+    <language>ko</language>
+    <lastBuildDate>Sun, 15 Dec 2024 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://hairgatorhp.netlify.app/rss.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>헤어게이터 - AI 헤어 컬러 레시피 서비스</title>
+      <link>https://hairgatorhp.netlify.app/</link>
+      <description>AI 기반 헤어 컬러 레시피 서비스로 정확한 염색 배합을 제공합니다.</description>
+      <pubDate>Sun, 15 Dec 2024 00:00:00 +0900</pubDate>
+      <guid>https://hairgatorhp.netlify.app/</guid>
+    </item>
+
+    <item>
+      <title>헤어게이터 소개</title>
+      <link>https://hairgatorhp.netlify.app/#about</link>
+      <description>헤어게이터 서비스 소개 및 특징</description>
+      <pubDate>Sun, 15 Dec 2024 00:00:00 +0900</pubDate>
+      <guid>https://hairgatorhp.netlify.app/#about</guid>
+    </item>
+
+    <item>
+      <title>스타일 메뉴</title>
+      <link>https://hairgatorhp.netlify.app/#style-menu</link>
+      <description>다양한 헤어 스타일 메뉴 안내</description>
+      <pubDate>Sun, 15 Dec 2024 00:00:00 +0900</pubDate>
+      <guid>https://hairgatorhp.netlify.app/#style-menu</guid>
+    </item>
+
+    <item>
+      <title>AI 레시피</title>
+      <link>https://hairgatorhp.netlify.app/#ai-recipe</link>
+      <description>AI 기반 헤어 컬러 레시피 기능 소개</description>
+      <pubDate>Sun, 15 Dec 2024 00:00:00 +0900</pubDate>
+      <guid>https://hairgatorhp.netlify.app/#ai-recipe</guid>
+    </item>
+  </channel>
+</rss>
