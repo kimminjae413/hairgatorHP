@@ -439,270 +439,76 @@ async function runChatDemo() {
     }
 }
 
-// ==================== AI Analysis Canvas Animation ====================
+// ==================== Hero Stats Counter Animation ====================
 
-function initAIAnalysisCanvas() {
-    const canvas = document.getElementById('ai-analysis-canvas');
-    if (!canvas) return;
+function initHeroStats() {
+    const statNumbers = document.querySelectorAll('.hero-stats .stat-number[data-count]');
+    if (statNumbers.length === 0) return;
 
-    const ctx = canvas.getContext('2d');
-    const container = canvas.parentElement;
+    const animateCounter = (element) => {
+        const target = parseInt(element.dataset.count);
+        const duration = 2000;
+        const startTime = performance.now();
 
-    function resizeCanvas() {
-        canvas.width = container.offsetWidth;
-        canvas.height = container.offsetHeight;
-    }
+        function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
 
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+            // Ease out cubic
+            const easeProgress = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(easeProgress * target);
 
-    // 페이스 메쉬 포인트들 (얼굴 영역에 집중)
-    const facePoints = [];
-    const hairPoints = [];
-    const numFacePoints = 30;
-    const numHairPoints = 20;
+            element.textContent = current.toLocaleString();
 
-    // 얼굴 영역 포인트 생성 (이미지 중앙 하단)
-    for (let i = 0; i < numFacePoints; i++) {
-        facePoints.push({
-            x: 0.3 + Math.random() * 0.4, // 30-70% 가로
-            y: 0.3 + Math.random() * 0.4, // 30-70% 세로
-            size: Math.random() * 3 + 2,
-            pulse: Math.random() * Math.PI * 2,
-            connections: []
-        });
-    }
-
-    // 헤어 영역 포인트 생성 (이미지 상단)
-    for (let i = 0; i < numHairPoints; i++) {
-        hairPoints.push({
-            x: 0.2 + Math.random() * 0.6, // 20-80% 가로
-            y: 0.1 + Math.random() * 0.25, // 10-35% 세로
-            size: Math.random() * 2 + 1,
-            pulse: Math.random() * Math.PI * 2
-        });
-    }
-
-    // 연결선 설정
-    facePoints.forEach((point, i) => {
-        const nearbyPoints = facePoints
-            .map((p, j) => ({ index: j, dist: Math.hypot(p.x - point.x, p.y - point.y) }))
-            .filter(p => p.index !== i && p.dist < 0.15)
-            .slice(0, 3);
-        point.connections = nearbyPoints.map(p => p.index);
-    });
-
-    let animationFrame = 0;
-
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        const w = canvas.width;
-        const h = canvas.height;
-
-        // 페이스 메쉬 그리기
-        ctx.strokeStyle = 'rgba(233, 30, 99, 0.3)';
-        ctx.lineWidth = 1;
-
-        // 연결선 그리기
-        facePoints.forEach((point, i) => {
-            point.connections.forEach(j => {
-                const other = facePoints[j];
-                ctx.beginPath();
-                ctx.moveTo(point.x * w, point.y * h);
-                ctx.lineTo(other.x * w, other.y * h);
-                ctx.stroke();
-            });
-        });
-
-        // 페이스 포인트 그리기
-        facePoints.forEach((point, i) => {
-            const pulse = Math.sin(animationFrame * 0.05 + point.pulse) * 0.5 + 0.5;
-            const size = point.size * (1 + pulse * 0.3);
-
-            ctx.beginPath();
-            ctx.arc(point.x * w, point.y * h, size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(233, 30, 99, ${0.5 + pulse * 0.5})`;
-            ctx.fill();
-
-            // 글로우 효과
-            ctx.beginPath();
-            ctx.arc(point.x * w, point.y * h, size * 2, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(233, 30, 99, ${0.1 * pulse})`;
-            ctx.fill();
-        });
-
-        // 헤어 분석 포인트 그리기
-        hairPoints.forEach((point, i) => {
-            const pulse = Math.sin(animationFrame * 0.03 + point.pulse) * 0.5 + 0.5;
-
-            // 수직선 (헤어 분석 느낌)
-            ctx.beginPath();
-            ctx.moveTo(point.x * w, point.y * h);
-            ctx.lineTo(point.x * w, point.y * h + 20 + pulse * 10);
-            ctx.strokeStyle = `rgba(236, 64, 122, ${0.3 + pulse * 0.3})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-
-            // 포인트
-            ctx.beginPath();
-            ctx.arc(point.x * w, point.y * h, point.size * (1 + pulse * 0.5), 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(236, 64, 122, ${0.6 + pulse * 0.4})`;
-            ctx.fill();
-        });
-
-        // 분석 그리드 효과
-        ctx.strokeStyle = 'rgba(233, 30, 99, 0.05)';
-        ctx.lineWidth = 1;
-        const gridSize = 50;
-        for (let x = 0; x < w; x += gridSize) {
-            ctx.beginPath();
-            ctx.moveTo(x, 0);
-            ctx.lineTo(x, h);
-            ctx.stroke();
-        }
-        for (let y = 0; y < h; y += gridSize) {
-            ctx.beginPath();
-            ctx.moveTo(0, y);
-            ctx.lineTo(w, y);
-            ctx.stroke();
-        }
-
-        // 코너 타겟팅 UI
-        const cornerSize = 40;
-        ctx.strokeStyle = 'rgba(233, 30, 99, 0.6)';
-        ctx.lineWidth = 2;
-
-        // 좌상단
-        ctx.beginPath();
-        ctx.moveTo(20, 20 + cornerSize);
-        ctx.lineTo(20, 20);
-        ctx.lineTo(20 + cornerSize, 20);
-        ctx.stroke();
-
-        // 우상단
-        ctx.beginPath();
-        ctx.moveTo(w - 20 - cornerSize, 20);
-        ctx.lineTo(w - 20, 20);
-        ctx.lineTo(w - 20, 20 + cornerSize);
-        ctx.stroke();
-
-        // 좌하단
-        ctx.beginPath();
-        ctx.moveTo(20, h - 20 - cornerSize);
-        ctx.lineTo(20, h - 20);
-        ctx.lineTo(20 + cornerSize, h - 20);
-        ctx.stroke();
-
-        // 우하단
-        ctx.beginPath();
-        ctx.moveTo(w - 20 - cornerSize, h - 20);
-        ctx.lineTo(w - 20, h - 20);
-        ctx.lineTo(w - 20, h - 20 - cornerSize);
-        ctx.stroke();
-
-        animationFrame++;
-        requestAnimationFrame(draw);
-    }
-
-    draw();
-}
-
-// ==================== Typing Animation ====================
-
-const typingTexts = [
-    { text: '감각에 데이터를 더해', type: 'normal' },
-    { text: '\n', type: 'break' },
-    { text: '디자이너의 기술을 ', type: 'normal' },
-    { text: '확신', type: 'highlight' },
-    { text: '으로 만드는', type: 'normal' },
-    { text: '\n', type: 'break' },
-    { text: 'AI 헤어 솔루션', type: 'bold' },
-    { text: '입니다.', type: 'normal' }
-];
-
-let typingElement = null;
-let cursorElement = null;
-let currentSegment = 0;
-let currentChar = 0;
-let typingStarted = false;
-
-function typeNextChar() {
-    if (!typingElement) return;
-
-    if (currentSegment >= typingTexts.length) {
-        // 타이핑 완료 - 잠시 대기 후 리셋하고 반복
-        setTimeout(() => {
-            typingElement.innerHTML = '';
-            currentSegment = 0;
-            currentChar = 0;
-            if (cursorElement) {
-                cursorElement.style.display = 'inline-block';
-            }
-            setTimeout(typeNextChar, 500);
-        }, 3000); // 3초 대기 후 반복
-        return;
-    }
-
-    const segment = typingTexts[currentSegment];
-
-    if (segment.type === 'break') {
-        typingElement.innerHTML += '<br>';
-        currentSegment++;
-        currentChar = 0;
-        setTimeout(typeNextChar, 100);
-        return;
-    }
-
-    if (currentChar < segment.text.length) {
-        const char = segment.text[currentChar];
-
-        if (currentChar === 0 && segment.type !== 'normal') {
-            // 새 스타일 세그먼트 시작
-            if (segment.type === 'highlight') {
-                typingElement.innerHTML += '<span class="highlight">';
-            } else if (segment.type === 'bold') {
-                typingElement.innerHTML += '<span class="bold">';
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                element.textContent = target.toLocaleString();
             }
         }
 
-        typingElement.innerHTML = typingElement.innerHTML.replace(/<\/span>$/, '') + char;
+        requestAnimationFrame(update);
+    };
 
-        if (segment.type !== 'normal') {
-            typingElement.innerHTML += '</span>';
-        }
-
-        currentChar++;
-
-        // 타이핑 속도 (랜덤하게 자연스럽게)
-        const speed = Math.random() * 50 + 50; // 50-100ms
-        setTimeout(typeNextChar, speed);
-    } else {
-        currentSegment++;
-        currentChar = 0;
-        setTimeout(typeNextChar, 80);
-    }
-}
-
-function startTypingAnimation() {
-    typingElement = document.getElementById('typing-text');
-    cursorElement = document.querySelector('.typing-cursor');
-
-    if (!typingElement || typingStarted) return;
-
-    typingStarted = true;
-
-    // Intersection Observer로 화면에 보일 때 시작
+    // Intersection Observer로 화면에 보일 때 카운터 시작
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                setTimeout(typeNextChar, 500);
+                statNumbers.forEach(stat => animateCounter(stat));
                 observer.disconnect();
             }
         });
     }, { threshold: 0.5 });
 
-    observer.observe(typingElement);
+    const statsContainer = document.querySelector('.hero-stats');
+    if (statsContainer) {
+        observer.observe(statsContainer);
+    }
+}
+
+// ==================== Parallax Effect for Hero ====================
+
+function initHeroParallax() {
+    const heroSection = document.querySelector('.hero-cinematic');
+    if (!heroSection) return;
+
+    const orbs = heroSection.querySelectorAll('.gradient-orb');
+    const particles = heroSection.querySelectorAll('.particle');
+
+    window.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 2;
+        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+
+        orbs.forEach((orb, i) => {
+            const speed = (i + 1) * 10;
+            orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+        });
+
+        particles.forEach((particle, i) => {
+            const speed = (i + 1) * 5;
+            particle.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+        });
+    });
 }
 
 // ==================== Reviews Slider ====================
@@ -865,11 +671,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setupHeaderScroll();
     setupSmoothScroll();
 
-    // Start AI analysis canvas animation
-    initAIAnalysisCanvas();
-
-    // Start typing animation
-    startTypingAnimation();
+    // Initialize hero section
+    initHeroStats();
+    initHeroParallax();
 
     // Initialize review slider
     initReviewSlider();
