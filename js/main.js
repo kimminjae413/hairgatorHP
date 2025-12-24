@@ -439,6 +439,79 @@ async function runChatDemo() {
     }
 }
 
+// ==================== Hero Title Typing Animation ====================
+
+const heroTypingTexts = [
+    { text: '감각에 데이터를 더해', type: 'normal' },
+    { text: '\n', type: 'break' },
+    { text: '기술', type: 'highlight' },
+    { text: '을 ', type: 'normal' },
+    { text: '확신', type: 'highlight' },
+    { text: '으로', type: 'normal' }
+];
+
+let heroTypingElement = null;
+let heroCurrentSegment = 0;
+let heroCurrentChar = 0;
+
+function typeHeroNextChar() {
+    if (!heroTypingElement) return;
+
+    if (heroCurrentSegment >= heroTypingTexts.length) {
+        // 타이핑 완료 - 3초 대기 후 리셋하고 반복
+        setTimeout(() => {
+            heroTypingElement.innerHTML = '';
+            heroCurrentSegment = 0;
+            heroCurrentChar = 0;
+            setTimeout(typeHeroNextChar, 500);
+        }, 4000);
+        return;
+    }
+
+    const segment = heroTypingTexts[heroCurrentSegment];
+
+    if (segment.type === 'break') {
+        heroTypingElement.innerHTML += '<br>';
+        heroCurrentSegment++;
+        heroCurrentChar = 0;
+        setTimeout(typeHeroNextChar, 150);
+        return;
+    }
+
+    if (heroCurrentChar < segment.text.length) {
+        const char = segment.text[heroCurrentChar];
+
+        if (heroCurrentChar === 0 && segment.type === 'highlight') {
+            heroTypingElement.innerHTML += '<span class="highlight">';
+        }
+
+        // 현재 span 닫고 문자 추가 후 다시 span 열기
+        if (segment.type === 'highlight') {
+            heroTypingElement.innerHTML = heroTypingElement.innerHTML.replace(/<\/span>$/, '') + char + '</span>';
+        } else {
+            heroTypingElement.innerHTML += char;
+        }
+
+        heroCurrentChar++;
+
+        // 타이핑 속도 (자연스럽게)
+        const speed = Math.random() * 40 + 60;
+        setTimeout(typeHeroNextChar, speed);
+    } else {
+        heroCurrentSegment++;
+        heroCurrentChar = 0;
+        setTimeout(typeHeroNextChar, 100);
+    }
+}
+
+function initHeroTyping() {
+    heroTypingElement = document.getElementById('typing-title');
+    if (!heroTypingElement) return;
+
+    // 페이지 로드 후 바로 시작
+    setTimeout(typeHeroNextChar, 800);
+}
+
 // ==================== Hero Stats Counter Animation ====================
 
 function initHeroStats() {
@@ -672,6 +745,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupSmoothScroll();
 
     // Initialize hero section
+    initHeroTyping();
     initHeroStats();
     initHeroParallax();
 
