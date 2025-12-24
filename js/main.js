@@ -512,53 +512,6 @@ function initHeroTyping() {
     setTimeout(typeHeroNextChar, 800);
 }
 
-// ==================== Hero Stats Counter Animation ====================
-
-function initHeroStats() {
-    const statNumbers = document.querySelectorAll('.hero-stats .stat-number[data-count]');
-    if (statNumbers.length === 0) return;
-
-    const animateCounter = (element) => {
-        const target = parseInt(element.dataset.count);
-        const duration = 2000;
-        const startTime = performance.now();
-
-        function update(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-
-            // Ease out cubic
-            const easeProgress = 1 - Math.pow(1 - progress, 3);
-            const current = Math.floor(easeProgress * target);
-
-            element.textContent = current.toLocaleString();
-
-            if (progress < 1) {
-                requestAnimationFrame(update);
-            } else {
-                element.textContent = target.toLocaleString();
-            }
-        }
-
-        requestAnimationFrame(update);
-    };
-
-    // Intersection Observer로 화면에 보일 때 카운터 시작
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                statNumbers.forEach(stat => animateCounter(stat));
-                observer.disconnect();
-            }
-        });
-    }, { threshold: 0.5 });
-
-    const statsContainer = document.querySelector('.hero-stats');
-    if (statsContainer) {
-        observer.observe(statsContainer);
-    }
-}
-
 // ==================== Parallax Effect for Hero ====================
 
 function initHeroParallax() {
@@ -746,7 +699,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize hero section
     initHeroTyping();
-    initHeroStats();
     initHeroParallax();
 
     // Initialize review slider
