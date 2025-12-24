@@ -178,35 +178,42 @@
         <div class="corner-decor bottom-right"></div>
     </section>
 
-    <!-- Hero Section -->
-    <section class="hero" id="style-menu">
-        <div class="hero-content">
-            <p class="hero-tag">Hair Style Menu</p>
-            <h1 class="hero-title">
-                고객이 원하는 <span class="highlight">그 느낌</span>,<br>
-                직접 눈으로 보며 상담해 보세요.
-            </h1>
-            <p class="hero-subtitle">
-                "이런 느낌이요"를 더 이상 추측하지 마세요.<br class="desktop-only">
-                HAIRGATOR 스타일 메뉴판으로<br class="mobile-only"> 상담은 빠르게, 만족도는 높게.
+    <!-- Style Menu Section -->
+    <section class="style-menu-section" id="style-menu">
+        <div class="section-header">
+            <span class="section-badge">Hair Style Menu</span>
+            <h2 class="section-title-new">
+                고객이 원하는 <span class="text-gradient">그 느낌</span>,<br>
+                직접 눈으로 보며 상담하세요
+            </h2>
+            <p class="section-desc">
+                "이런 느낌이요"를 더 이상 추측하지 마세요.<br>
+                스타일 메뉴판으로 상담은 빠르게, 만족도는 높게.
             </p>
         </div>
 
-        <!-- Real Usage Photo -->
-        <div class="real-usage-container">
-            <img src="images/salon-scene.jpg" alt="실제 매장에서 헤어메뉴판 사용 장면" class="real-usage-photo">
-            <p class="real-usage-caption">
-                현재 <span class="female-count">여성 <span id="femaleStyleCount">-</span>개</span>,<br class="mobile-only">
-                <span class="male-count">남성 <span id="maleStyleCount">-</span>개</span><br class="mobile-only">
-                헤어스타일 이미지가<br class="mobile-only"> 준비되어 있습니다.<br>
-                <span class="free-trial">무료로 이용해 보세요!</span><br>
-                <span class="caption-note">(실제 메뉴판에 등록된 이미지 숫자입니다.)</span>
-            </p>
+        <!-- Stats Cards -->
+        <div class="style-stats">
+            <div class="style-stat-card">
+                <span class="stat-icon female">♀</span>
+                <div class="stat-info">
+                    <span class="stat-count" id="femaleStyleCount">-</span>
+                    <span class="stat-text">여성 스타일</span>
+                </div>
+            </div>
+            <div class="style-stat-card">
+                <span class="stat-icon male">♂</span>
+                <div class="stat-info">
+                    <span class="stat-count" id="maleStyleCount">-</span>
+                    <span class="stat-text">남성 스타일</span>
+                </div>
+            </div>
         </div>
 
         <!-- Interactive Demo - Menu Slideshow -->
-        <div class="demo-container">
-            <div class="demo-window menu-slideshow">
+        <div class="demo-container-new">
+            <div class="demo-device">
+                <div class="device-notch"></div>
                 <div class="slideshow-wrapper">
                     <img src="메뉴판/헤어메뉴판0.jpg" alt="메뉴판" class="slideshow-image active" id="slide-0">
                     <img src="메뉴판/헤어메뉴판1.jpg" alt="메뉴판" class="slideshow-image" id="slide-1">
@@ -216,7 +223,7 @@
                     <img src="메뉴판/헤어메뉴판5.jpg" alt="룩북" class="slideshow-image" id="slide-5">
                     <img src="메뉴판/헤어메뉴판6.jpg" alt="룩북" class="slideshow-image" id="slide-6">
 
-                    <!-- Click Indicator (Arrow Cursor) -->
+                    <!-- Click Indicator -->
                     <div class="click-indicator" id="clickIndicator">
                         <div class="click-ripple"></div>
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="#FFD700" stroke="#000" stroke-width="1" style="filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));">
@@ -224,51 +231,76 @@
                         </svg>
                     </div>
                 </div>
+            </div>
 
-                <!-- Step Indicator -->
-                <div class="slideshow-steps">
-                    <span class="step active" data-step="0">성별 선택</span>
-                    <span class="step" data-step="1">기장 선택</span>
-                    <span class="step" data-step="2">스타일 탐색</span>
-                    <span class="step" data-step="3">상세 보기</span>
-                    <span class="step" data-step="4">룩북</span>
+            <!-- Step Indicator -->
+            <div class="slideshow-steps-new">
+                <div class="step-item active" data-step="0">
+                    <span class="step-num">01</span>
+                    <span class="step-text">성별 선택</span>
+                </div>
+                <div class="step-item" data-step="1">
+                    <span class="step-num">02</span>
+                    <span class="step-text">기장 선택</span>
+                </div>
+                <div class="step-item" data-step="2">
+                    <span class="step-num">03</span>
+                    <span class="step-text">스타일 탐색</span>
+                </div>
+                <div class="step-item" data-step="3">
+                    <span class="step-num">04</span>
+                    <span class="step-text">상세 보기</span>
+                </div>
+                <div class="step-item" data-step="4">
+                    <span class="step-num">05</span>
+                    <span class="step-text">룩북</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features" id="ai-recipe">
+    <section class="features-new" id="ai-recipe">
         <div class="container">
-            <h2 class="section-title">기술을 배우는 가장 쉬운 방법</h2>
-            <p class="section-subtitle"><strong class="highlight">AI STUDIO</strong>에서<br class="mobile-only"> 헤어 관련<br class="mobile-only"> 무엇이든<br class="mobile-only"> 질문해 보세요!<br>질문하는 순간 내 지식이 됩니다.</p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24">
+            <div class="section-header">
+                <span class="section-badge">AI Studio</span>
+                <h2 class="section-title-new">
+                    기술을 배우는<br>
+                    <span class="text-gradient">가장 쉬운 방법</span>
+                </h2>
+                <p class="section-desc">
+                    질문하는 순간 내 지식이 됩니다
+                </p>
+            </div>
+
+            <div class="features-grid-new">
+                <div class="feature-card-new">
+                    <div class="feature-num">01</div>
+                    <div class="feature-icon-new">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
                             <path d="M6 12v5c3 3 9 3 12 0v-5"/>
                         </svg>
                     </div>
                     <h3>내 손안의 1타 강사</h3>
-                    <p>모르는 게 있어도 괜찮아요.<br class="mobile-only"> 24시간 AI 과외 선생님이<br class="mobile-only"> 바로 내 기술로 만들어 드립니다.</p>
+                    <p>모르는 게 있어도 괜찮아요. 24시간 AI 과외 선생님이 바로 내 기술로 만들어 드립니다.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24">
+                <div class="feature-card-new">
+                    <div class="feature-num">02</div>
+                    <div class="feature-icon-new">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
                         </svg>
                     </div>
                     <h3>나만의 맞춤 레시피</h3>
-                    <p>복잡한 계산은 끝.<br class="mobile-only"> 고객 스타일만 입력하면<br class="mobile-only"> AI가 최적의 레시피를 보여줍니다.</p>
+                    <p>복잡한 계산은 끝. 고객 스타일만 입력하면 AI가 최적의 레시피를 보여줍니다.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24">
+                <div class="feature-card-new">
+                    <div class="feature-num">03</div>
+                    <div class="feature-icon-new">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
                             <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-                            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
-                            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
                         </svg>
                     </div>
                     <h3>독보적인 기술 완성</h3>
@@ -279,11 +311,18 @@
     </section>
 
     <!-- AI Studio Section -->
-    <section class="ai-studio-section" id="ai-studio">
+    <section class="ai-studio-new" id="ai-studio">
         <div class="container">
-            <p class="section-tag">AI Hair Recipe</p>
-            <h2 class="section-title">어려운 기술은 <span class="highlight">AI</span>가,<br> 당신은 감각만 펼치세요.</h2>
-            <p class="section-subtitle">10년 걸릴 노하우,<br class="mobile-only"> AI와 함께라면 1년이면 충분합니다.</p>
+            <div class="section-header">
+                <span class="section-badge">AI Hair Recipe</span>
+                <h2 class="section-title-new">
+                    어려운 기술은 <span class="text-gradient">AI</span>가,<br>
+                    당신은 감각만 펼치세요
+                </h2>
+                <p class="section-desc">
+                    10년 걸릴 노하우, AI와 함께라면 1년이면 충분합니다
+                </p>
+            </div>
         </div>
 
         <!-- AI Studio Demo -->
@@ -338,23 +377,33 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta">
+    <section class="cta-new">
+        <div class="cta-bg-gradient"></div>
         <div class="container">
-            <h2><span class="highlight">헤어 마스터</span>로 가는<br class="mobile-only"> 가장 빠른 길 🧭</h2>
-            <p>막막했던 커트 이론도, 헷갈리는 펌 레시피도<br class="desktop-only"> 헤어게이터와 함께라면 쉽게 내것이 됩니다.</p>
-            <div class="cta-download-buttons">
-                <a href="https://apps.apple.com/kr/app/헤어게이터/id1587833071" class="btn-download-cta apple" target="_blank">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                    </svg>
-                    App Store
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.drylink&pcampaignid=web_share" class="btn-download-cta google" target="_blank">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
-                    </svg>
-                    Google Play
-                </a>
+            <div class="cta-content">
+                <span class="cta-badge">Start Now</span>
+                <h2 class="cta-title">
+                    <span class="text-gradient">헤어 마스터</span>로 가는<br>
+                    가장 빠른 길
+                </h2>
+                <p class="cta-desc">
+                    막막했던 커트 이론도, 헷갈리는 펌 레시피도<br>
+                    헤어게이터와 함께라면 쉽게 내것이 됩니다
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://apps.apple.com/kr/app/헤어게이터/id1587833071" class="cta-btn primary" target="_blank">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                        <span>App Store에서 다운로드</span>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.drylink&pcampaignid=web_share" class="cta-btn secondary" target="_blank">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                        </svg>
+                        <span>Google Play에서 다운로드</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>

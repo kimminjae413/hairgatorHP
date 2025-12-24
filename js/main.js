@@ -52,7 +52,7 @@ let slideshowInterval = null;
 // DOM Elements
 const slides = document.querySelectorAll('.slideshow-image');
 const clickIndicator = document.getElementById('clickIndicator');
-const steps = document.querySelectorAll('.slideshow-steps .step');
+const steps = document.querySelectorAll('.slideshow-steps-new .step-item');
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
