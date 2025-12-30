@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hairgatorhp.netlify.app/sitemap.xml
+Sitemap: https://hairgator.kr/sitemap.xml
