@@ -475,10 +475,15 @@ body {
     border-radius: 50%;
     background: var(--white);
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-    font-size: 20px;
-    line-height: 1;
+    overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: default;
+}
+
+.marker-flag img {
+    width: 110%;
+    height: 110%;
+    object-fit: cover;
 }
 
 .map-marker:hover .marker-flag {
