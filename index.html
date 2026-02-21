@@ -108,41 +108,75 @@
                 </a>
             </div>
 
-            <!-- Languages Support -->
-            <div class="hero-languages">
-                <div class="languages-label">8개국어 지원</div>
-                <div class="languages-row">
-                    <div class="lang-item">
-                        <span class="lang-flag">🇰🇷</span>
-                        <span class="lang-name">한국어</span>
+            <!-- World Map Languages -->
+            <div class="hero-world-map">
+                <div class="world-map-label">8개국어 지원</div>
+                <div class="world-map-container">
+                    <svg class="world-map-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Grid lines -->
+                        <line x1="0" y1="250" x2="1000" y2="250" stroke="rgba(0,0,0,0.04)" stroke-width="0.5" stroke-dasharray="6,4"/>
+                        <line x1="0" y1="125" x2="1000" y2="125" stroke="rgba(0,0,0,0.04)" stroke-width="0.5" stroke-dasharray="6,4"/>
+                        <line x1="0" y1="375" x2="1000" y2="375" stroke="rgba(0,0,0,0.04)" stroke-width="0.5" stroke-dasharray="6,4"/>
+                        <line x1="250" y1="0" x2="250" y2="500" stroke="rgba(0,0,0,0.04)" stroke-width="0.5" stroke-dasharray="6,4"/>
+                        <line x1="500" y1="0" x2="500" y2="500" stroke="rgba(0,0,0,0.04)" stroke-width="0.5" stroke-dasharray="6,4"/>
+                        <line x1="750" y1="0" x2="750" y2="500" stroke="rgba(0,0,0,0.04)" stroke-width="0.5" stroke-dasharray="6,4"/>
+                        <!-- North America -->
+                        <path d="M50,80 L80,60 L130,55 L170,70 L210,65 L240,80 L260,100 L250,130 L230,155 L210,170 L195,190 L180,210 L170,230 L160,250 L150,240 L140,225 L120,210 L100,195 L90,180 L80,160 L65,140 L55,120 L45,100 Z" fill="rgba(0,0,0,0.06)"/>
+                        <!-- South America -->
+                        <path d="M200,270 L220,260 L240,265 L260,280 L270,300 L275,325 L270,350 L260,375 L250,395 L235,410 L220,420 L210,430 L205,415 L200,395 L195,370 L190,345 L185,320 L190,295 Z" fill="rgba(0,0,0,0.06)"/>
+                        <!-- Europe -->
+                        <path d="M430,70 L450,65 L470,70 L490,80 L510,75 L520,90 L515,110 L505,130 L495,145 L485,155 L475,160 L460,165 L445,160 L435,150 L425,135 L420,115 L425,95 Z" fill="rgba(0,0,0,0.06)"/>
+                        <!-- Africa -->
+                        <path d="M450,175 L470,170 L495,175 L515,185 L525,205 L530,230 L528,260 L520,290 L510,315 L495,335 L480,345 L465,340 L455,325 L448,300 L445,270 L442,240 L440,210 L445,190 Z" fill="rgba(0,0,0,0.06)"/>
+                        <!-- Asia -->
+                        <path d="M530,60 L570,55 L620,60 L670,55 L720,60 L760,70 L790,85 L810,100 L820,120 L825,145 L820,170 L810,190 L795,205 L775,215 L750,220 L720,225 L690,230 L660,240 L640,250 L620,245 L600,235 L580,220 L560,200 L545,180 L535,155 L530,130 L525,105 L525,80 Z" fill="rgba(0,0,0,0.06)"/>
+                        <!-- Southeast Asia / Indonesia -->
+                        <path d="M680,260 L710,255 L740,260 L760,270 L775,280 L790,290 L800,275 L810,280 L800,295 L785,305 L770,310 L750,305 L730,295 L710,285 L695,275 Z" fill="rgba(0,0,0,0.06)"/>
+                        <!-- Australia -->
+                        <path d="M770,340 L800,330 L830,335 L860,345 L880,360 L885,380 L878,400 L860,415 L840,420 L815,418 L795,410 L780,395 L770,375 L765,355 Z" fill="rgba(0,0,0,0.06)"/>
+                        <!-- Japan -->
+                        <path d="M835,110 L840,100 L845,115 L848,130 L845,145 L840,155 L835,145 L832,130 L833,118 Z" fill="rgba(0,0,0,0.06)"/>
+                    </svg>
+                    <!-- Country markers -->
+                    <div class="map-marker" style="left:15%;top:36%">
+                        <span class="marker-pulse"></span>
+                        <span class="marker-flag">🇺🇸</span>
+                        <span class="marker-name">English</span>
                     </div>
-                    <div class="lang-item">
-                        <span class="lang-flag">🇺🇸</span>
-                        <span class="lang-name">English</span>
+                    <div class="map-marker" style="left:44%;top:30%">
+                        <span class="marker-pulse"></span>
+                        <span class="marker-flag">🇪🇸</span>
+                        <span class="marker-name">Español</span>
                     </div>
-                    <div class="lang-item">
-                        <span class="lang-flag">🇯🇵</span>
-                        <span class="lang-name">日本語</span>
+                    <div class="map-marker" style="left:62%;top:28%">
+                        <span class="marker-pulse"></span>
+                        <span class="marker-flag">🇨🇳</span>
+                        <span class="marker-name">中文</span>
                     </div>
-                    <div class="lang-item">
-                        <span class="lang-flag">🇨🇳</span>
-                        <span class="lang-name">中文</span>
+                    <div class="map-marker" style="left:82%;top:22%">
+                        <span class="marker-pulse"></span>
+                        <span class="marker-flag">🇰🇷</span>
+                        <span class="marker-name">한국어</span>
                     </div>
-                    <div class="lang-item">
-                        <span class="lang-flag">🇻🇳</span>
-                        <span class="lang-name">Tiếng Việt</span>
+                    <div class="map-marker" style="left:93%;top:30%">
+                        <span class="marker-pulse"></span>
+                        <span class="marker-flag">🇯🇵</span>
+                        <span class="marker-name">日本語</span>
                     </div>
-                    <div class="lang-item">
-                        <span class="lang-flag">🇮🇩</span>
-                        <span class="lang-name">Indonesia</span>
+                    <div class="map-marker" style="left:56%;top:52%">
+                        <span class="marker-pulse"></span>
+                        <span class="marker-flag">🇹🇭</span>
+                        <span class="marker-name">ไทย</span>
                     </div>
-                    <div class="lang-item">
-                        <span class="lang-flag">🇹🇭</span>
-                        <span class="lang-name">ไทย</span>
+                    <div class="map-marker" style="left:72%;top:44%">
+                        <span class="marker-pulse"></span>
+                        <span class="marker-flag">🇻🇳</span>
+                        <span class="marker-name">Tiếng Việt</span>
                     </div>
-                    <div class="lang-item">
-                        <span class="lang-flag">🇪🇸</span>
-                        <span class="lang-name">Español</span>
+                    <div class="map-marker" style="left:83%;top:62%">
+                        <span class="marker-pulse"></span>
+                        <span class="marker-flag">🇮🇩</span>
+                        <span class="marker-name">Indonesia</span>
                     </div>
                 </div>
             </div>
@@ -154,6 +188,60 @@
             <span>Scroll</span>
         </div>
 
+    </section>
+
+    <!-- Brand Video Section -->
+    <section class="brand-video-section" id="brand-video">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">HAIRGATOR</span>
+                <h2 class="section-title-new">
+                    감각을 완성하는<br>
+                    <span class="text-gradient">AI 파트너</span>
+                </h2>
+                <p class="section-desc">
+                    HAIRGATOR가 디자이너의 기술을<br class="mobile-only">
+                    한 단계 높이는 방법을 확인하세요
+                </p>
+            </div>
+
+            <div class="video-device-container">
+                <div class="video-device">
+                    <div class="device-notch"></div>
+                    <div class="video-wrapper">
+                        <video id="brandVideo"
+                               src="videos/brand-video.mp4"
+                               muted
+                               playsinline
+                               preload="metadata">
+                        </video>
+                        <div class="video-overlay" id="videoOverlay">
+                            <button class="video-play-btn" id="videoPlayBtn" aria-label="영상 재생">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="video-controls" id="videoControls">
+                            <button class="video-ctrl-btn" id="videoMuteBtn" aria-label="소리 켜기">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="muted-icon">
+                                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                                    <line x1="23" y1="9" x2="17" y2="15"/>
+                                    <line x1="17" y1="9" x2="23" y2="15"/>
+                                </svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="unmuted-icon" style="display:none;">
+                                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="video-progress">
+                            <div class="video-progress-bar" id="videoProgressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Style Menu Section -->
