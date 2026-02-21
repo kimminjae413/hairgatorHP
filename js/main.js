@@ -491,6 +491,98 @@ function initHeroTyping() {
 
 
 
+// ==================== Brand Video Section ====================
+
+function initBrandVideo() {
+    const video = document.getElementById('brandVideo');
+    const overlay = document.getElementById('videoOverlay');
+    const playBtn = document.getElementById('videoPlayBtn');
+    const muteBtn = document.getElementById('videoMuteBtn');
+    const controls = document.getElementById('videoControls');
+    const progressBar = document.getElementById('videoProgressBar');
+
+    if (!video) return;
+
+    let isPlaying = false;
+
+    function togglePlay() {
+        if (video.paused) {
+            video.play();
+            isPlaying = true;
+            overlay.classList.add('hidden');
+            controls.classList.add('show');
+        } else {
+            video.pause();
+            isPlaying = false;
+            overlay.classList.remove('hidden');
+            controls.classList.remove('show');
+        }
+    }
+
+    function toggleMute() {
+        video.muted = !video.muted;
+        const mutedIcon = muteBtn.querySelector('.muted-icon');
+        const unmutedIcon = muteBtn.querySelector('.unmuted-icon');
+        if (video.muted) {
+            mutedIcon.style.display = '';
+            unmutedIcon.style.display = 'none';
+        } else {
+            mutedIcon.style.display = 'none';
+            unmutedIcon.style.display = '';
+        }
+    }
+
+    // Click handlers
+    overlay.addEventListener('click', togglePlay);
+    playBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        togglePlay();
+    });
+    muteBtn.addEventListener('click', toggleMute);
+
+    // Click video to pause/play
+    video.addEventListener('click', togglePlay);
+
+    // Progress bar
+    video.addEventListener('timeupdate', () => {
+        if (video.duration) {
+            const pct = (video.currentTime / video.duration) * 100;
+            progressBar.style.width = pct + '%';
+        }
+    });
+
+    // Reset on video end (fallback if loop fails)
+    video.addEventListener('ended', () => {
+        isPlaying = false;
+        overlay.classList.remove('hidden');
+        controls.classList.remove('show');
+        progressBar.style.width = '0%';
+    });
+
+    // Handle autoplay: hide overlay once video starts playing
+    video.addEventListener('playing', () => {
+        isPlaying = true;
+        overlay.classList.add('hidden');
+        controls.classList.add('show');
+    });
+
+    // Scroll-based play/pause with IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && video.paused) {
+                video.play().catch(() => {
+                    // Autoplay blocked by browser - keep play button visible
+                });
+            } else if (!entry.isIntersecting && !video.paused) {
+                video.pause();
+                isPlaying = false;
+            }
+        });
+    }, { threshold: 0.3 });
+
+    observer.observe(video);
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     setupHeaderScroll();
@@ -498,6 +590,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize hero section
     initHeroTyping();
+
+    // Initialize brand video
+    initBrandVideo();
 
     // Start menu slideshow after a short delay
     if (slides.length > 0) {
