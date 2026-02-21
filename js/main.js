@@ -559,28 +559,39 @@ function initBrandVideo() {
         progressBar.style.width = '0%';
     });
 
-    // Handle autoplay: hide overlay once video starts playing
+    // Sync UI state with video events
     video.addEventListener('playing', () => {
         isPlaying = true;
         overlay.classList.add('hidden');
         controls.classList.add('show');
     });
 
-    // Scroll-based play/pause with IntersectionObserver
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && video.paused) {
-                video.play().catch(() => {
-                    // Autoplay blocked by browser - keep play button visible
-                });
-            } else if (!entry.isIntersecting && !video.paused) {
-                video.pause();
-                isPlaying = false;
-            }
-        });
-    }, { threshold: 0.3 });
+    video.addEventListener('pause', () => {
+        isPlaying = false;
+    });
 
-    observer.observe(video);
+    // Scroll-based autoplay: play when section visible, pause when not
+    const section = document.getElementById('brand-video');
+    if (section) {
+        let userPaused = false;
+
+        // Track user-initiated pause (click to pause)
+        video.addEventListener('click', () => { userPaused = video.paused ? false : true; });
+        overlay.addEventListener('click', () => { userPaused = false; });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && video.paused && !userPaused) {
+                    video.play().catch(() => {});
+                } else if (!entry.isIntersecting && !video.paused) {
+                    video.pause();
+                    userPaused = false;
+                }
+            });
+        }, { threshold: 0.2 });
+
+        observer.observe(section);
+    }
 }
 
 // Initialize
