@@ -1,0 +1,7 @@
+# Netlify 기본 도메인 → 커스텀 도메인으로 301 리다이렉트
+# (네이버가 hairgatorhp.netlify.app을 대표 URL로 잡는 문제 해결)
+[[redirects]]
+  from = "https://hairgatorhp.netlify.app/*"
+  to = "https://hairgator.kr/:splat"
+  status = 301
+  force = true
