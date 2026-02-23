@@ -485,7 +485,8 @@ function initHeroTyping() {
     heroTypingElement = document.getElementById('typing-title');
     if (!heroTypingElement) return;
 
-    // 페이지 로드 후 바로 시작
+    // SEO: 크롤러용 기본 텍스트 제거 후 타이핑 애니메이션 시작
+    heroTypingElement.innerHTML = '';
     setTimeout(typeHeroNextChar, 800);
 }
 
