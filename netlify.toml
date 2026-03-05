@@ -5,3 +5,55 @@
   to = "https://hairgator.kr/:splat"
   status = 301
   force = true
+
+# ========== HTTP 헤더 설정 ==========
+
+# HTML 파일 - 캐시 비활성화 (항상 최신)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+
+# CSS/JS 파일 - 10분 캐시
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=600, must-revalidate"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=600, must-revalidate"
+
+# 이미지 - 1달 캐시
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, immutable"
+
+# SEO 파일 - 캐시 비활성화
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "no-cache, must-revalidate"
+    Content-Type = "text/plain; charset=utf-8"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "no-cache, must-revalidate"
+    Content-Type = "application/xml; charset=utf-8"
+
+[[headers]]
+  for = "/rss.xml"
+  [headers.values]
+    Cache-Control = "no-cache, must-revalidate"
+    Content-Type = "application/rss+xml; charset=utf-8"
+
+# 네이버 인증 파일
+[[headers]]
+  for = "/naver*.html"
+  [headers.values]
+    Cache-Control = "no-cache, must-revalidate"

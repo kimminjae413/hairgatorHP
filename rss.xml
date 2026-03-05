@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>헤어게이터 - AI 헤어 컬러 레시피</title>
+    <title>헤어게이터 HAIRGATOR - AI 헤어 솔루션</title>
     <link>https://hairgator.kr</link>
-    <description>AI 기반 헤어 컬러 레시피 서비스, 헤어게이터</description>
+    <description>감각에 데이터를 더해 기술을 확신으로. AI 헤어 스타일 분석, 커트/펌 레시피, 헤어 메뉴판 솔루션</description>
     <language>ko</language>
-    <lastBuildDate>Mon, 30 Dec 2025 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 05 Mar 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://hairgator.kr/rss.xml" rel="self" type="application/rss+xml"/>
 
     <item>
-      <title>헤어게이터 - AI 헤어 컬러 레시피 서비스</title>
+      <title>헤어게이터 - AI 기반 헤어 스타일 분석 및 레시피 솔루션</title>
       <link>https://hairgator.kr/</link>
-      <description>AI 기반 헤어 컬러 레시피 서비스로 정확한 염색 배합을 제공합니다.</description>
-      <pubDate>Mon, 30 Dec 2025 00:00:00 +0900</pubDate>
+      <description>헤어 디자이너를 위한 AI 솔루션. 3,000개 이상의 스타일 메뉴판, AI 커트/펌 레시피, 퍼스널컬러 진단, 스타일 매칭 기능을 제공합니다. 8개국어 지원으로 글로벌 미용 시장에 대응합니다.</description>
+      <pubDate>Wed, 05 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://hairgator.kr/</guid>
     </item>
 
     <item>
-      <title>헤어게이터 소개</title>
+      <title>헤어게이터 소개 - 감각에 데이터를 더해 기술을 확신으로</title>
       <link>https://hairgator.kr/#about</link>
-      <description>헤어게이터 서비스 소개 및 특징</description>
-      <pubDate>Mon, 30 Dec 2025 00:00:00 +0900</pubDate>
+      <description>헤어게이터는 AI 기술로 헤어 디자이너의 감각을 데이터로 뒷받침합니다. 커트 이론, 펌 레시피, 염색 배합을 AI가 분석하고 제안하여 디자이너의 기술력 향상을 돕습니다.</description>
+      <pubDate>Wed, 05 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://hairgator.kr/#about</guid>
     </item>
 
     <item>
-      <title>스타일 메뉴</title>
+      <title>스타일 메뉴판 - 3,000개 이상 헤어스타일 메뉴</title>
       <link>https://hairgator.kr/#style-menu</link>
-      <description>다양한 헤어 스타일 메뉴 안내</description>
-      <pubDate>Mon, 30 Dec 2025 00:00:00 +0900</pubDate>
+      <description>여성 2,000개 이상, 남성 1,000개 이상의 헤어스타일을 사진과 함께 제공합니다. 고객 상담 시 원하는 스타일을 직접 보며 소통할 수 있는 디지털 헤어 메뉴판입니다.</description>
+      <pubDate>Wed, 05 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://hairgator.kr/#style-menu</guid>
     </item>
 
     <item>
-      <title>AI 레시피</title>
+      <title>AI 레시피 - 24시간 AI 헤어 기술 과외</title>
       <link>https://hairgator.kr/#ai-recipe</link>
-      <description>AI 기반 헤어 컬러 레시피 기능 소개</description>
-      <pubDate>Mon, 30 Dec 2025 00:00:00 +0900</pubDate>
+      <description>커트 각도, 펌 로드 배치, 염색 배합 등 복잡한 헤어 기술을 AI가 실시간으로 분석하고 레시피를 제공합니다. 사진을 올리면 도해도와 함께 상세 레시피를 받을 수 있습니다.</description>
+      <pubDate>Wed, 05 Mar 2026 00:00:00 +0900</pubDate>
       <guid>https://hairgator.kr/#ai-recipe</guid>
     </item>
   </channel>
