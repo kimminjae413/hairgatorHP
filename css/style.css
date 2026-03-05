@@ -214,6 +214,15 @@ body {
     box-shadow: 0 8px 24px rgba(201, 0, 122, 0.25);
 }
 
+.nav .btn-ambassador-header {
+    background: linear-gradient(135deg, #FF6B00, #E65100);
+}
+
+.nav .btn-ambassador-header:hover {
+    background: linear-gradient(135deg, #E65100, #BF360C);
+    box-shadow: 0 8px 24px rgba(230, 81, 0, 0.25);
+}
+
 /* Header Store Buttons */
 .header-store-buttons {
     display: flex;
